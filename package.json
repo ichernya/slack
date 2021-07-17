@@ -13,5 +13,14 @@
     "frontend": "cd frontend && npm start",
     "start": "(npm run backend) & (npm run frontend)",
     "zip": "bestzip Assignment8.Submission.zip frontend/src/* backend/sql/* backend/src/* backend/api/*"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-openapi-validator": "^4.12.14",
+    "js-yaml": "^4.1.0",
+    "pg": "^8.6.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }
