@@ -3,5 +3,6 @@ INSERT INTO dummy (created) VALUES (current_timestamp);
 
 -- Populate Your Tables Here --
 DELETE FROM users;
-INSERT INTO users (user pass firstName lastName) VALUES ('user1', '1234', 'Alex', 'Jacobs');
-INSERT INTO users (user pass firstName lastName) VALUES ('user2', '1235', 'Evan', 'Crow');
+INSERT INTO users (user, pass, information) VALUES ('user1', '1234', {'firstName':'Alex','lastName':'Jacobs','status':'online'});
+INSERT INTO users (user, pass, information) VALUES ('user2', '1235', {'firstName':'Evan','lastName':'Crowe','status':'online'});
+INSERT INTO users (user, pass, information) VALUES ('abjf', 'adR541', {'firstName':'Ed','lastName':'Gate','status':'offline'});
