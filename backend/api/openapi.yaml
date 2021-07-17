@@ -30,6 +30,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /users:
+    get:
+      description: login user
+      responses:
+        200:
+          description: Username and Password correct
+        404:
+          description: wrong credentials
+
 components:
   schemas:
     Error:
