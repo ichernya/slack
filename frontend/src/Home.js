@@ -7,6 +7,10 @@ import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import SearchIcon from '@material-ui/icons/Search';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
+import AccountCircleOutlinedIcon from
+  '@material-ui/icons/AccountCircleOutlined';
 import './Home.css';
 
 /**
@@ -21,17 +25,51 @@ function Home() {
         CSE183 Summer 2021
         <ArrowDropDownCircleIcon id='header-arrow'/>
       </div>
+      <div id='channel-body'>
+        <div id='body-header'>
+          <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'/>
+          Channels
+        </div>
+        <div id='channel' style={{display: 'block'}}>
+          <ChevronRightIcon id='hash' fontSize='small'/>
+          Assignment 1
+        </div>
+        <div id='channel' style={{display: 'block'}}>
+          <ChevronRightIcon id='hash' fontSize='small'/>
+          Assignment 2
+        </div>
+        <div id='channel' style={{display: 'block'}}>
+          <AddBoxOutlinedIcon id='hash' fontSize='small'/>
+          Add Channel
+        </div>
+        <div id='body-header'>
+          <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'/>
+          Direct Messages
+        </div>
+        <div id='channel' style={{display: 'block'}}>
+          <AccountCircleOutlinedIcon id='hash' fontSize='small'/>
+          Jimbo McGee
+        </div>
+        <div id='channel' style={{display: 'block'}}>
+          <AccountCircleOutlinedIcon id='hash' fontSize='small'/>
+          Dude Man
+        </div>
+        <div id='channel' style={{display: 'block'}}>
+          <AddBoxOutlinedIcon id='hash' fontSize='small'/>
+          Add Teammate
+        </div>
+      </div>
       <BottomNavigation id='navigation'>
         <BottomNavigationAction
-          label="Recents" icon={<HomeOutlinedIcon />} />
+          label="" icon={<HomeOutlinedIcon />} />
         <BottomNavigationAction
-          label="Favorites" icon={<ForumOutlinedIcon />} />
+          label="" icon={<ForumOutlinedIcon />} />
         <BottomNavigationAction
-          label="Nearby" icon={<AlternateEmailIcon />} />
+          label="" icon={<AlternateEmailIcon />} />
         <BottomNavigationAction
-          label="Recents" icon={<SearchIcon />} />
+          label="" icon={<SearchIcon />} />
         <BottomNavigationAction
-          label="Recents" icon={<PermIdentityIcon />} />
+          label="" icon={<PermIdentityIcon />} />
       </BottomNavigation>
     </div>
   );
