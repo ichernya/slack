@@ -36,14 +36,6 @@ function App() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   /**
-<<<<<<< Updated upstream
-   * @param {string} username username they provided
-   * @param {string} username username they provided
-  */
-  function changePage(username, password) {
-    fetch('http://localhost:3010/v0/users')
-        .then();
-=======
   * @param {String} username - Username for user
   * @param {String} password - Password for user
   */
@@ -52,7 +44,6 @@ function App() {
     fetch(first + `users?username=${username}?password=${password}`)
       .then(console.log(res))
       .catch((err) => err);
->>>>>>> Stashed changes
     setLoginDisplay('none');
     setHomeDisplay('block');
   }
