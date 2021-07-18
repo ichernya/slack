@@ -1,0 +1,36 @@
+#channel-head {
+  font-size: 20pt;
+  position: fixed;
+  background-color: purple;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  margin-left: 30px;
+  margin-top: -40px;
+  z-index: 9;
+}
+
+#channel-type {
+  font-family: sans-serif;
+  color: white;
+  padding-top: 50px;
+  font-size: 13pt;
+  padding-left: 10px;
+  height: 30px;
+  width: 180px;
+  position: fixed;
+  z-index: 9;
+}
+
+#channel-main {
+  position: absolute;
+  background-color: red;
+  margin-top: 40px;
+  min-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100%;
+  z-index: 9;
+  font-size: 150pt;
+}

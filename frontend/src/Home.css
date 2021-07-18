@@ -18,6 +18,17 @@
   background-color: purple;
 }
 
+#chosen-channel {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  height: 40px;
+  background-color: purple;
+  color: white;
+  z-index: 9;
+}
+
 #header {
   position: absolute;
   top: 0%;

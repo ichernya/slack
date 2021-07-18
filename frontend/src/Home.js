@@ -1,5 +1,6 @@
 import React from 'react';
 import Profile from './Profile.js';
+import Channel from './Channel.js';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -26,6 +27,8 @@ const exampleDMs = ['Jimbo McGee', 'Dude Man'];
 function Home() {
   const [workspaceDisplay, setWorkspaceDisplay] = React.useState('none');
   const [channelDisplay, setChannelDisplay] = React.useState('none');
+  const [channelChosen, setChannelChosen] = React.useState('none');
+  const [channelName, setChannelName] = React.useState('');
   const [directDisplay, setDirectDisplay] = React.useState('none');
   const [messageDisplay, setMessageDisplay] = React.useState('none');
   const [atDisplay, setAtDisplay] = React.useState('none');
@@ -45,12 +48,20 @@ function Home() {
     return workspaces;
   }
   /**
+  * @param {String} name - Name of Channel to Open
+  */
+  function openChannel(name) {
+    setChannelChosen('block');
+    setChannelName(name);
+  }
+  /**
   * @return {Array} - Channels for Page
   */
   function generateChannels() {
     const channels = [];
     for (let i = 0; i < exampleChannels.length; i++) {
-      channels[i] = <div id='channel' style={{display: channelDisplay}}>
+      channels[i] = <div id='channel' style={{display: channelDisplay}}
+        onClick={()=>openChannel(exampleChannels[i])}>
         <ChevronRightIcon id='hash' fontSize='small'/>
         {exampleChannels[i]}
       </div>;
@@ -77,6 +88,7 @@ function Home() {
     setAtDisplay('none');
     setSearchDisplay('none');
     setProfileDisplay('none');
+    setChannelChosen('none');
   }
   /**
   * @return {Array} - Direct Messages for Page
@@ -90,6 +102,10 @@ function Home() {
   }
   return (
     <div>
+      <div id='chosen-channel' style={{display: channelChosen}}>
+        {generateHeader()}
+        <Channel name={channelName}/>
+      </div>
       <div style={{display: messageDisplay}}>
         {generateHeader()}
       </div>
