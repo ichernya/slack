@@ -35,18 +35,19 @@ function Home() {
   const [searchDisplay, setSearchDisplay] = React.useState('none');
   const [profileDisplay, setProfileDisplay] = React.useState('none');
   const [currentChannels, setCurrentChannels] = React.useState([]);
-  getChannels('CSE183 Summer 2020');
+  getChannels('CSE183 SUMMER 2021');
   /**
   * @param {String} workspace - Workspace User is in
   */
   function getChannels(workspace) {
     const first = 'http://localhost:3010/v0/';
-    fetch(first + `workspace?workspace=${workspace}`)
+    fetch(first + `channel?Workspace=${workspace}`)
       .then((res) => {
+        console.log(res);
         if (res.status === 200) {
           console.log(res);
           for (let i = 0; i < res.channels.length; i++) {
-            const channel = createChannels(res.channels[i]);
+            const channel = createChannels(res.channels[i].channelName);
             const existing = currentChannels;
             existing.push(channel);
             setCurrentChannels(existing);
