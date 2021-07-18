@@ -18,7 +18,7 @@ import './Home.css';
 
 const username = 'Keaton Singer';
 const exampleWorkspaces = ['CSE183 Summer 2020', 'CSE183 Summer 2019'];
-const exampleChannels = ['Assignment 1', 'Assignment 2'];
+// const exampleChannels = ['Assignment 1', 'Assignment 2'];
 const exampleDMs = ['Jimbo McGee', 'Dude Man'];
 
 /**
@@ -34,6 +34,29 @@ function Home() {
   const [atDisplay, setAtDisplay] = React.useState('none');
   const [searchDisplay, setSearchDisplay] = React.useState('none');
   const [profileDisplay, setProfileDisplay] = React.useState('none');
+  const [currentChannels, setCurrentChannels] = React.useState([]);
+  getChannels('CSE183 Summer 2020');
+  /**
+  * @param {String} workspace - Workspace User is in
+  */
+  function getChannels(workspace) {
+    const first = 'http://localhost:3010/v0/';
+    fetch(first + `workspace?workspace=${workspace}`)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+          for (let i = 0; i < res.channels.length; i++) {
+            const channel = createChannels(res.channels[i]);
+            const existing = currentChannels;
+            existing.push(channel);
+            setCurrentChannels(existing);
+          }
+        } else {
+          alert('Channels: Something Went Wrong!');
+        }
+      })
+      .catch((err) => err);
+  }
   /**
   * @return {Array} - Channels for Page
   */
@@ -55,18 +78,17 @@ function Home() {
     setChannelName(name);
   }
   /**
-  * @return {Array} - Channels for Page
+  * @param {String} name - Name of Channel
+  * @return {JSX} - Channels for Page
   */
-  function generateChannels() {
-    const channels = [];
-    for (let i = 0; i < exampleChannels.length; i++) {
-      channels[i] = <div id='channel' style={{display: channelDisplay}}
-        onClick={()=>openChannel(exampleChannels[i])}>
+  function createChannels(name) {
+    return (
+      <div id='channel' style={{display: channelDisplay}}
+        onClick={()=>openChannel(name)}>
         <ChevronRightIcon id='hash' fontSize='small'/>
-        {exampleChannels[i]}
-      </div>;
-    }
-    return channels;
+        {name}
+      </div>
+    );
   }
   /**
   * @return {Array} - Direct Messages for Page
@@ -135,7 +157,7 @@ function Home() {
               setChannelDisplay('none') : setChannelDisplay('block')}/>
           Channels
         </div>
-        {generateChannels()}
+        {currentChannels}
         <div id='channel' style={{display: channelDisplay}}>
           <AddBoxOutlinedIcon id='hash' fontSize='small'/>
           Add Channel
