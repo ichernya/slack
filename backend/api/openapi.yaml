@@ -88,6 +88,28 @@ paths:
           description: failed
 
   /channel:
+    get:
+      description: Returns all Channels
+      parameters:
+        - in: query
+          name: Workspace
+          schema:
+            type: string
+          required: false
+          description: Workspace to return, blank for all
+      responses:
+        200:
+          description: Channel Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllChannels'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       description: Add a new channel
       requestBody:
@@ -161,3 +183,11 @@ components:
           type: string
         channelName:
           type: string
+
+    AllChannels:
+      type: array
+      items:
+        $ref: '#/components/schemas/Channel'
+    
+    Channel:
+      type: string
