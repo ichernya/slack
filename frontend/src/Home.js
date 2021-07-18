@@ -1,4 +1,5 @@
 import React from 'react';
+import Profile from './Profile.js';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -9,25 +10,29 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
+import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
 import AccountCircleOutlinedIcon from
   '@material-ui/icons/AccountCircleOutlined';
 import './Home.css';
 
+const username = 'Keaton Singer';
 const exampleWorkspaces = ['CSE183 Summer 2020', 'CSE183 Summer 2019'];
 const exampleChannels = ['Assignment 1', 'Assignment 2'];
 const exampleDMs = ['Jimbo McGee', 'Dude Man'];
-const navigationIcons = [<HomeOutlinedIcon />, <ForumOutlinedIcon />,
-  <AlternateEmailIcon />, <SearchIcon />, <PermIdentityIcon />];
 
 /**
-* @return {object} - Home Page for Application
+* @return {JSX} - Home Page for Application
 */
 function Home() {
   const [workspaceDisplay, setWorkspaceDisplay] = React.useState('none');
   const [channelDisplay, setChannelDisplay] = React.useState('none');
   const [directDisplay, setDirectDisplay] = React.useState('none');
+  const [messageDisplay, setMessageDisplay] = React.useState('none');
+  const [atDisplay, setAtDisplay] = React.useState('none');
+  const [searchDisplay, setSearchDisplay] = React.useState('none');
+  const [profileDisplay, setProfileDisplay] = React.useState('none');
   /**
-  * @return {object} - Channels for Page
+  * @return {Array} - Channels for Page
   */
   function generateWorkspaces() {
     const workspaces = [];
@@ -40,7 +45,7 @@ function Home() {
     return workspaces;
   }
   /**
-  * @return {object} - Channels for Page
+  * @return {Array} - Channels for Page
   */
   function generateChannels() {
     const channels = [];
@@ -53,7 +58,7 @@ function Home() {
     return channels;
   }
   /**
-  * @return {object} - Direct Messages for Page
+  * @return {Array} - Direct Messages for Page
   */
   function generateDMs() {
     const DMs = [];
@@ -66,17 +71,38 @@ function Home() {
     return DMs;
   }
   /**
-  * @return {object} - Navigation Icons for Page
   */
-  function generateNavIcons() {
-    const icons = [];
-    for (let i = 0; i < navigationIcons.length; i++) {
-      icons[i] = <BottomNavigationAction icon={navigationIcons[i]} />;
-    }
-    return icons;
+  function closeAll() {
+    setMessageDisplay('none');
+    setAtDisplay('none');
+    setSearchDisplay('none');
+    setProfileDisplay('none');
+  }
+  /**
+  * @return {Array} - Direct Messages for Page
+  */
+  function generateHeader() {
+    return (
+      <div id='special-header'>
+        <ArrowBackOutlinedIcon onClick={()=>closeAll()} id='special-arrow'/>
+      </div>
+    );
   }
   return (
     <div>
+      <div style={{display: messageDisplay}}>
+        {generateHeader()}
+      </div>
+      <div style={{display: atDisplay}}>
+        {generateHeader()}
+      </div>
+      <div style={{display: searchDisplay}}>
+        {generateHeader()}
+      </div>
+      <div style={{display: profileDisplay}}>
+        {generateHeader()}
+        <Profile username={username}/>
+      </div>
       <div id='header'>
         CSE183 Summer 2021
         <ArrowDropDownCircleIcon id='header-arrow'
@@ -111,7 +137,19 @@ function Home() {
         </div>
       </div>
       <BottomNavigation id='navigation'>
-        {generateNavIcons()}
+        <BottomNavigationAction icon={<HomeOutlinedIcon/>}/>
+        <BottomNavigationAction icon={<ForumOutlinedIcon/>}
+          onClick={()=> messageDisplay === 'block' ?
+            setMessageDisplay('none') : setMessageDisplay('block')}/>
+        <BottomNavigationAction icon={<AlternateEmailIcon/>}
+          onClick={()=> atDisplay === 'block' ?
+            setAtDisplay('none') : setAtDisplay('block')}/>
+        <BottomNavigationAction icon={<SearchIcon/>}
+          onClick={()=> searchDisplay === 'block' ?
+            setSearchDisplay('none') : setSearchDisplay('block')}/>
+        <BottomNavigationAction icon={<PermIdentityIcon/>}
+          onClick={()=> profileDisplay === 'block' ?
+            setProfileDisplay('none') : setProfileDisplay('block')}/>
       </BottomNavigation>
     </div>
   );

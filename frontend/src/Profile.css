@@ -1,0 +1,81 @@
+#profile-body {
+  font-family: sans-serif;
+  background-color: white;
+  margin-top: 40px;
+  height: 100%;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  z-index: 1;
+}
+
+#main-container {
+  position: fixed;
+  margin-top: 40px;
+  top: 0%;
+  font-size: 60px;
+  width: 100%;
+  height: 80px;
+}
+
+#profile-pic {
+  float: left;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+#username {
+  padding-left: 10px;
+  padding-top: 18px;
+  float: left;
+  font-size: 14pt;
+}
+
+#online-container {
+  padding-top: 10px;
+}
+
+#circle {
+  float: left;
+  margin-right: 10px;
+  height: 10px;
+  width: 10px;
+  border-radius: 100px;
+}
+
+#online {
+  float: left;
+  line-height: 12px;
+  font-size: 10pt;
+}
+
+#status-box {
+  position: fixed;
+  top: 0%;
+  height: 20px;
+  width: 93%;
+  margin-left: 10px;
+  margin-top: 120px;
+}
+
+#toggle-status {
+  position: fixed;
+  top: 0%;
+  margin-top: 160px;
+  margin-left: 10px;
+}
+
+#border {
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  height: 10px;
+  margin-top: 180px;
+  border-bottom: solid black 3px;
+}
+
+#sign-out {
+  padding-top: 167px;
+  padding-left: 10px;
+}

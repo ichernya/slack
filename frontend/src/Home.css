@@ -1,3 +1,23 @@
+#special-header {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  height: 40px;
+  background-color: purple;
+  color: white;
+  font-family: sans-serif;
+  padding-left: 5px;
+  line-height: 40px;
+  z-index: 1;
+}
+
+#special-arrow {
+  margin-top: 8px;
+  float: left;
+  background-color: purple;
+}
+
 #header {
   position: absolute;
   top: 0%;
@@ -91,5 +111,5 @@
   height: 60px;
   left: 0%;
   right: 0%;
-  z-index: 2;
+  z-index: 10;
 }
