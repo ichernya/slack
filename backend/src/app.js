@@ -9,6 +9,7 @@ const OpenApiValidator = require('express-openapi-validator');
 const dummy = require('./dummy');
 const users = require('./users');
 const messages = require('./messages');
+const channel = require('./channel');
 
 const app = express();
 app.use(cors());
@@ -31,6 +32,7 @@ app.use(
 app.get('/v0/dummy', dummy.get);
 app.get('/v0/users', users.login);
 app.post('/v0/messages', messages.sendNew);
+app.get('/v0/channel', channel.getAll)
 // Your routes go here
 
 app.use((err, req, res, next) => {

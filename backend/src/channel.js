@@ -17,7 +17,25 @@ const addChannel = async (curWorkspace, channelName) => {
     await pool.query(query);
 }
 
+const allChannel = async () => {
+    const select = 'SELECT * FROM channel'
+    const query = {
+        text: select,
+        values: [  ]
+    }
+    ret = [];
+    const { rows } = await pool.query(query);
+    for (const row in rows) {
+        ret.push(row.channelName);
+    }
+}
+
 exports.sendNew = async (req, res) => {
     await addMessage(req.body.curWorkspace, req.body.channelName);
     res.status(201).send(req.body);
+}
+
+exports.getAll = async (req, res) => {
+    const channels = await allChannel();
+    res.status(200).json(channels);
 }

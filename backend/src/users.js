@@ -14,9 +14,9 @@ const findUser = async (user, pass) => {
         text: select,
         values: [ user, pass ],
     }
-    const {person} = await pool.query(query)
-    console.log(person);
-    if (person) {return person;}
+    const {rows} = await pool.query(query);
+    console.log(rows);
+    if (rows) {return rows;}
     else {return undefined;}
 };;
 

@@ -7,8 +7,8 @@ CREATE TABLE dummy(created TIMESTAMP WITH TIME ZONE);
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
-    username TEXT NOT NULL,
-    passhash TEXT NOT NULL,
+    username VARCHAR(32),
+    passhash VARCHAR(32),
     information jsonb
     );
 
