@@ -38,6 +38,7 @@ paths:
           description: Username and Password correct
         404:
           description: wrong credentials
+    
 
 components:
   schemas:

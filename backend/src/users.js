@@ -10,10 +10,10 @@ const pool = new Pool({
 
 const findUser = async (user, pass) => {
     console.log(user, pass);
-    const select = 'SELECT * FROM users';
+    const select = 'SELECT * FROM users WHERE user = $1 AND pass = $2';
     const query = {
         text: select,
-        values: [],
+        values: [ user, pass ],
     }
     const person = await pool.query(query)
     console.log(person);
@@ -22,8 +22,9 @@ const findUser = async (user, pass) => {
 };;
 
 exports.login = async (req, res) => {
+    //grab user from frontend instead
     const user = 'user1';
-    const pass = '1234'
+    const pass = '1234';
     const person = await findUser(user, pass);
     if (person) {res.status(200).send();}
     else {res.status(404).send();}
