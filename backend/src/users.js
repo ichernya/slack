@@ -10,7 +10,7 @@ const pool = new Pool({
 
 const findUser = async (user, pass) => {
     console.log(user, pass);
-    const select = 'SELECT * FROM users WHERE user = $1 AND pass = $2';
+    const select = 'SELECT * FROM users WHERE username = $1 AND passhash = $2';
     const query = {
         text: select,
         values: [ user, pass ],

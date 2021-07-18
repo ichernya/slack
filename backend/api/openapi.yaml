@@ -47,13 +47,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Create'  
+              $ref: '#/components/schemas/CreateUser'  
       responses: 
         201:
           description: created
         409:
           description: conflict
       
+  /messages:
+    post:
+      description:
+      requestBody:
+        description: message contents
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendMessage'
+      responses:
+        201:
+          description: created message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendMessage'
+        404:
+          description: failed
 
 components:
   schemas:
@@ -75,7 +94,7 @@ components:
         message:
           type: string
     
-    Create:
+    CreateUser:
       required:
         - username
         - password
@@ -87,3 +106,19 @@ components:
             type: string
           name:
             type: string
+      
+    SendMessage:
+      required:
+        - username
+        - channel
+      properties:
+        username:
+          type: string
+        message:
+          type: string
+        time:
+          type: string
+        channel:
+          type: string
+        replies:
+          type: integer
