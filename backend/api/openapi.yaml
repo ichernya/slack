@@ -38,7 +38,22 @@ paths:
           description: Username and Password correct
         404:
           description: wrong credentials
-    
+
+    post:
+      description: create a new user
+      requestBody:
+        description: username and password for user
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Create'  
+      responses: 
+        201:
+          description: created
+        409:
+          description: conflict
+      
 
 components:
   schemas:
@@ -59,3 +74,16 @@ components:
       properties:
         message:
           type: string
+    
+    Create:
+      required:
+        - username
+        - password
+        - name
+      properties:
+          username:
+            type: string
+          password:
+            type: string
+          name:
+            type: string
