@@ -25,6 +25,16 @@ function Home() {
         CSE183 Summer 2021
         <ArrowDropDownCircleIcon id='header-arrow'/>
       </div>
+      <div id='workspace-body' style={{display: 'none'}}>
+        <div id='workspace'>
+          <ChevronRightIcon id='workspace-arrow' fontSize='medium'/>
+          CSE183 Summer 2020
+        </div>
+        <div id='workspace'>
+          <ChevronRightIcon id='workspace-arrow' fontSize='medium'/>
+          CSE183 Summer 2019
+        </div>
+      </div>
       <div id='channel-body'>
         <div id='body-header'>
           <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'/>
