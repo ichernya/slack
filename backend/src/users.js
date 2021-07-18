@@ -9,7 +9,7 @@ const pool = new Pool({
 });
 
 const findUser = async (user, pass) => {
-    const select = `SELECT * FROM users WHERE username = '${user}'`;
+    const select = `SELECT * FROM users WHERE username = $1 AND passhash = $2`;
     const query = {
         text: select,
         values: [],
@@ -18,7 +18,7 @@ const findUser = async (user, pass) => {
     console.log(rows);
     if (rows) {return rows;}
     else {return undefined;}
-};;
+};
 
 exports.login = async (req, res) => {
     const usernameQuery = req.query.username;
@@ -27,4 +27,4 @@ exports.login = async (req, res) => {
     const person = await findUser(usernameQuery, passwordQuery);
     if (person) {res.status(200).send();}
     else {res.status(404).send();}
-}
+};
