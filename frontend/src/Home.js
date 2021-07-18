@@ -137,7 +137,8 @@ function Home() {
         </div>
       </div>
       <BottomNavigation id='navigation'>
-        <BottomNavigationAction icon={<HomeOutlinedIcon/>}/>
+        <BottomNavigationAction icon={<HomeOutlinedIcon/>}
+          onClick={()=>closeAll()}/>
         <BottomNavigationAction icon={<ForumOutlinedIcon/>}
           onClick={()=> messageDisplay === 'block' ?
             setMessageDisplay('none') : setMessageDisplay('block')}/>
