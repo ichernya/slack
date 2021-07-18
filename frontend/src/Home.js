@@ -13,12 +13,65 @@ import AccountCircleOutlinedIcon from
   '@material-ui/icons/AccountCircleOutlined';
 import './Home.css';
 
+const exampleWorkspaces = ['CSE183 Summer 2020', 'CSE183 Summer 2019'];
+const exampleChannels = ['Assignment 1', 'Assignment 2'];
+const exampleDMs = ['Jimbo McGee', 'Dude Man'];
+const navigationIcons = [<HomeOutlinedIcon />, <ForumOutlinedIcon />,
+  <AlternateEmailIcon />, <SearchIcon />, <PermIdentityIcon />];
+
 /**
-* Simple component with no state.
-*
-* @return {object} JSX
+* @return {object} - Home Page for Application
 */
 function Home() {
+  /**
+  * @return {object} - Channels for Page
+  */
+  function generateWorkspaces() {
+    const workspaces = [];
+    for (let i = 0; i < exampleWorkspaces.length; i++) {
+      workspaces[i] = <div id='workspace'>
+        <ChevronRightIcon id='workspace-arrow' fontSize='medium'/>
+        {exampleWorkspaces[i]}
+      </div>;
+    }
+    return workspaces;
+  }
+  /**
+  * @return {object} - Channels for Page
+  */
+  function generateChannels() {
+    const channels = [];
+    for (let i = 0; i < exampleChannels.length; i++) {
+      channels[i] = <div id='channel' style={{display: 'block'}}>
+        <ChevronRightIcon id='hash' fontSize='small'/>
+        {exampleChannels[i]}
+      </div>;
+    }
+    return channels;
+  }
+  /**
+  * @return {object} - Direct Messages for Page
+  */
+  function generateDMs() {
+    const DMs = [];
+    for (let i = 0; i < exampleDMs.length; i++) {
+      DMs[i] = <div id='dm' style={{display: 'block'}}>
+        <AccountCircleOutlinedIcon id='hash' fontSize='small'/>
+        {exampleDMs[i]}
+      </div>;
+    }
+    return DMs;
+  }
+  /**
+  * @return {object} - Navigation Icons for Page
+  */
+  function generateNavIcons() {
+    const icons = [];
+    for (let i = 0; i < navigationIcons.length; i++) {
+      icons[i] = <BottomNavigationAction icon={navigationIcons[i]} />;
+    }
+    return icons;
+  }
   return (
     <div>
       <div id='header'>
@@ -26,28 +79,14 @@ function Home() {
         <ArrowDropDownCircleIcon id='header-arrow'/>
       </div>
       <div id='workspace-body' style={{display: 'none'}}>
-        <div id='workspace'>
-          <ChevronRightIcon id='workspace-arrow' fontSize='medium'/>
-          CSE183 Summer 2020
-        </div>
-        <div id='workspace'>
-          <ChevronRightIcon id='workspace-arrow' fontSize='medium'/>
-          CSE183 Summer 2019
-        </div>
+        {generateWorkspaces()}
       </div>
       <div id='channel-body'>
         <div id='body-header'>
           <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'/>
           Channels
         </div>
-        <div id='channel' style={{display: 'block'}}>
-          <ChevronRightIcon id='hash' fontSize='small'/>
-          Assignment 1
-        </div>
-        <div id='channel' style={{display: 'block'}}>
-          <ChevronRightIcon id='hash' fontSize='small'/>
-          Assignment 2
-        </div>
+        {generateChannels()}
         <div id='channel' style={{display: 'block'}}>
           <AddBoxOutlinedIcon id='hash' fontSize='small'/>
           Add Channel
@@ -56,30 +95,14 @@ function Home() {
           <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'/>
           Direct Messages
         </div>
-        <div id='channel' style={{display: 'block'}}>
-          <AccountCircleOutlinedIcon id='hash' fontSize='small'/>
-          Jimbo McGee
-        </div>
-        <div id='channel' style={{display: 'block'}}>
-          <AccountCircleOutlinedIcon id='hash' fontSize='small'/>
-          Dude Man
-        </div>
-        <div id='channel' style={{display: 'block'}}>
+        {generateDMs()}
+        <div id='add-channel' style={{display: 'block'}}>
           <AddBoxOutlinedIcon id='hash' fontSize='small'/>
           Add Teammate
         </div>
       </div>
       <BottomNavigation id='navigation'>
-        <BottomNavigationAction
-          label="" icon={<HomeOutlinedIcon />} />
-        <BottomNavigationAction
-          label="" icon={<ForumOutlinedIcon />} />
-        <BottomNavigationAction
-          label="" icon={<AlternateEmailIcon />} />
-        <BottomNavigationAction
-          label="" icon={<SearchIcon />} />
-        <BottomNavigationAction
-          label="" icon={<PermIdentityIcon />} />
+        {generateNavIcons()}
       </BottomNavigation>
     </div>
   );

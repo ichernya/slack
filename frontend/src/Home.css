@@ -70,7 +70,7 @@
   padding-right: 5px;
 }
 
-#channel {
+#channel, #add-channel, #dm {
   font-size: 10pt;
   height: 30px;
   line-height: 30px;
