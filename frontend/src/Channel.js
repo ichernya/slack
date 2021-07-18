@@ -14,13 +14,6 @@ function Channel(props) {
         </div>
       </div>
       <div id='channel-main'>
-        HELLO
-        HELLO
-        HELLO
-        H
-        H
-        H
-        H
       </div>
     </div>
   );
