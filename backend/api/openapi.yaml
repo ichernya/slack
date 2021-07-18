@@ -56,10 +56,10 @@ paths:
       
   /messages:
     post:
-      description:
+      description: Add a new message
       requestBody:
         description: message contents
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -71,6 +71,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendMessage'
+        404:
+          description: failed
+
+  /channel:
+    post:
+      description: Add a new channel
+      requestBody:
+        description: channel contents
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MakeChannel'
+      responses:
+        201:
+          description: created channel
         404:
           description: failed
 
@@ -122,3 +138,13 @@ components:
           type: string
         replies:
           type: integer
+
+    MakeChannel:
+      required:
+        - curWorkspace
+        - channelName
+      properties:
+        curWorkspace:
+          type: string
+        channelName:
+          type: string
