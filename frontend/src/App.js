@@ -41,11 +41,16 @@ function App() {
   */
   function changePage(username, password) {
     const first = 'http://localhost:3010/v0/';
-    fetch(first + `users?username=${username}?password=${password}`)
-      .then(console.log(res))
+    fetch(first + `users?username=${username}&password=${password}`)
+      .then((res) => {
+        if (res === 200) {
+          setLoginDisplay('none');
+          setHomeDisplay('block');
+        } else {
+          alert('Incorrect Username or Password')
+        }
+      })
       .catch((err) => err);
-    setLoginDisplay('none');
-    setHomeDisplay('block');
   }
   return (
     <div>
