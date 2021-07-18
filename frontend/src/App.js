@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './Login';
+import Home from './Home';
 // import Emoji from './Emoji';
 
 /**
@@ -31,7 +32,8 @@ import Login from './Login';
 function App() {
   return (
     <div>
-      <Login />
+      <div style={{display: 'none'}}><Login /></div>
+      <div style={{display: 'block'}}><Home /></div>
     </div>
   );
 }

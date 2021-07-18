@@ -1,0 +1,27 @@
+#header {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  height: 40px;
+  background-color: purple;
+  color: white;
+  font-family: sans-serif;
+  padding-left: 10px;
+  line-height: 40px;
+}
+
+#header-arrow {
+  padding-top: 8px;
+  padding-right: 10px;
+  float: right;
+  background-color: purple;
+}
+
+#navigation {
+  position: fixed;
+  bottom: 0%;
+  height: 60px;
+  left: 0%;
+  right: 0%;
+}
