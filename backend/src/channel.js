@@ -24,10 +24,9 @@ const allChannel = async () => {
         values: [  ]
     }
     ret = [];
-    const { rows } = await pool.query(query);
-    for (const row in rows) {
-        ret.push(row.channelName);
-    }
+    const {rows} = await pool.query(query);
+    console.log(rows);
+    return rows;
 }
 
 exports.sendNew = async (req, res) => {
