@@ -36,8 +36,12 @@ function App() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   /**
+   * @param {string} username username they provided
+   * @param {string} username username they provided
   */
-  function changePage() {
+  function changePage(username, password) {
+    fetch('http://localhost:3010/v0/users')
+        .then();
     setLoginDisplay('none');
     setHomeDisplay('block');
   }
