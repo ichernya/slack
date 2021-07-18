@@ -23,6 +23,9 @@ const navigationIcons = [<HomeOutlinedIcon />, <ForumOutlinedIcon />,
 * @return {object} - Home Page for Application
 */
 function Home() {
+  const [workspaceDisplay, setWorkspaceDisplay] = React.useState('none');
+  const [channelDisplay, setChannelDisplay] = React.useState('none');
+  const [directDisplay, setDirectDisplay] = React.useState('none');
   /**
   * @return {object} - Channels for Page
   */
@@ -42,7 +45,7 @@ function Home() {
   function generateChannels() {
     const channels = [];
     for (let i = 0; i < exampleChannels.length; i++) {
-      channels[i] = <div id='channel' style={{display: 'block'}}>
+      channels[i] = <div id='channel' style={{display: channelDisplay}}>
         <ChevronRightIcon id='hash' fontSize='small'/>
         {exampleChannels[i]}
       </div>;
@@ -55,7 +58,7 @@ function Home() {
   function generateDMs() {
     const DMs = [];
     for (let i = 0; i < exampleDMs.length; i++) {
-      DMs[i] = <div id='dm' style={{display: 'block'}}>
+      DMs[i] = <div id='dm' style={{display: directDisplay}}>
         <AccountCircleOutlinedIcon id='hash' fontSize='small'/>
         {exampleDMs[i]}
       </div>;
@@ -76,27 +79,33 @@ function Home() {
     <div>
       <div id='header'>
         CSE183 Summer 2021
-        <ArrowDropDownCircleIcon id='header-arrow'/>
+        <ArrowDropDownCircleIcon id='header-arrow'
+          onClick={()=> workspaceDisplay === 'block' ?
+            setWorkspaceDisplay('none') : setWorkspaceDisplay('block')}/>
       </div>
-      <div id='workspace-body' style={{display: 'none'}}>
+      <div id='workspace-body' style={{display: workspaceDisplay}}>
         {generateWorkspaces()}
       </div>
       <div id='channel-body'>
         <div id='body-header'>
-          <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'/>
+          <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'
+            onClick={()=> channelDisplay === 'block' ?
+              setChannelDisplay('none') : setChannelDisplay('block')}/>
           Channels
         </div>
         {generateChannels()}
-        <div id='channel' style={{display: 'block'}}>
+        <div id='channel' style={{display: channelDisplay}}>
           <AddBoxOutlinedIcon id='hash' fontSize='small'/>
           Add Channel
         </div>
         <div id='body-header'>
-          <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'/>
+          <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'
+            onClick={()=> directDisplay === 'block' ? setDirectDisplay('none') :
+              setDirectDisplay('block')}/>
           Direct Messages
         </div>
         {generateDMs()}
-        <div id='add-channel' style={{display: 'block'}}>
+        <div id='add-channel' style={{display: directDisplay}}>
           <AddBoxOutlinedIcon id='hash' fontSize='small'/>
           Add Teammate
         </div>
