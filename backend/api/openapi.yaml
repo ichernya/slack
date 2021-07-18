@@ -33,11 +33,24 @@ paths:
   /users:
     get:
       description: login user
+      parameters:
+        - name: username
+          in: query
+          description: Name of user
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: Password of user
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Username and Password correct
         404:
-          description: wrong credentials
+          description: Wrong Credentials
 
     post:
       description: create a new user

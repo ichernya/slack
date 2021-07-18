@@ -36,12 +36,23 @@ function App() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   /**
+<<<<<<< Updated upstream
    * @param {string} username username they provided
    * @param {string} username username they provided
   */
   function changePage(username, password) {
     fetch('http://localhost:3010/v0/users')
         .then();
+=======
+  * @param {String} username - Username for user
+  * @param {String} password - Password for user
+  */
+  function changePage(username, password) {
+    const first = 'http://localhost:3010/v0/';
+    fetch(first + `users?username=${username}?password=${password}`)
+      .then(console.log(res))
+      .catch((err) => err);
+>>>>>>> Stashed changes
     setLoginDisplay('none');
     setHomeDisplay('block');
   }
@@ -75,7 +86,7 @@ function App() {
             <span id='remember-text'>Remember me</span>
           </span>
           <button id='sign-button'
-            onClick={()=>changePage()}>Sign in</button>
+            onClick={()=>changePage(username, password)}>Sign in</button>
         </div>
       </div>
       <div style={{display: homeDisplay}}><Home /></div>
