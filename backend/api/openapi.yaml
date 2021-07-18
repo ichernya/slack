@@ -95,7 +95,7 @@ paths:
           name: Workspace
           schema:
             type: string
-          required: false
+          required: true
           description: Workspace to return, blank for all
       responses:
         200:
@@ -124,6 +124,31 @@ paths:
           description: created channel
         404:
           description: failed
+  
+  /workspace:
+    get:
+      description: returns the channels that a workspace has
+      parameters:
+        - in: query
+          name: workspace
+          schema:
+            type: string
+          required: true
+          description: which workspace to check
+      responses:
+        200:
+          description: workspace response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 
 components:
   schemas:
@@ -190,4 +215,13 @@ components:
         $ref: '#/components/schemas/Channel'
     
     Channel:
-      type: string
+      type: object
+      items:
+         $ref: '#/components/schemas/MakeChannel'
+      
+
+    
+    Workspace:
+      type: array
+      items: 
+        $ref: '#/components/schemas/Channel'

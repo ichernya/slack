@@ -10,11 +10,11 @@ INSERT INTO users(username, passhash, information) VALUES ('xor134', '431rox', '
 INSERT INTO users(username, passhash, information) VALUES ('usainboltfan', 'fa12st', '{"firstName":"Richard","lastName":"Piana","status":"online","workspace":"CSE183 Summer 2021"}');
 INSERT INTO users(username, passhash, information) VALUES ('enterlocks', 'k45314yv1345', '{"firstName":"Madison","lastName":"Vodar","status":"online","workspace":"CSE183 Summer 2021"}');
 
-DELETE FROM workspace;
-INSERT INTO workspace(workspaceName) VALUES ('CSE183 SUMMER 2021');
-INSERT INTO workspace(workspaceName) VALUES ('Google');
-INSERT INTO workspace(workspaceName) VALUES ('Apple');
-INSERT INTO workspace(workspaceName) VALUES ('Bing');
+-- DELETE FROM workspace;
+-- INSERT INTO workspace(workspaceName) VALUES ('CSE183 SUMMER 2021', '{"ASSIGNMENT", "ASSIGNMENT 2", "ASSIGNMENT 3", "ASSIGNMENT 4", "ASSIGNMENT 5"}');
+-- INSERT INTO workspace(workspaceName) VALUES ('Google', '{ASSIGNMENT 1, ASSIGNMENT 2, ASSIGNMENT 3, ASSIGNMENT 4, ASSIGNMENT 5}');
+-- INSERT INTO workspace(workspaceName) VALUES ('Apple', '{ASSIGNMENT 1, ASSIGNMENT 2, ASSIGNMENT 3, ASSIGNMENT 4, ASSIGNMENT 5}');
+-- INSERT INTO workspace(workspaceName) VALUES ('Bing', '{ASSIGNMENT 1, ASSIGNMENT 2, ASSIGNMENT 3, ASSIGNMENT 4, ASSIGNMENT 5}');
 
 
 DELETE FROM channel;

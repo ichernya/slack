@@ -10,6 +10,7 @@ const dummy = require('./dummy');
 const users = require('./users');
 const messages = require('./messages');
 const channel = require('./channel');
+const workspace = require('./workspace');
 
 const app = express();
 app.use(cors());
@@ -33,6 +34,7 @@ app.get('/v0/dummy', dummy.get);
 app.get('/v0/users', users.login);
 app.post('/v0/messages', messages.sendNew);
 app.get('/v0/channel', channel.getAll)
+app.get('/v0/workspace', workspace.getChannels)
 // Your routes go here
 
 app.use((err, req, res, next) => {
