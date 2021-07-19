@@ -59,7 +59,6 @@ function Home(props) {
       .catch((err) => err);
   }, [workspace]);
   useEffect(() => {
-    console.log(workspace, 'Initiated');
     setCurrDMs([]);
     const first = 'http://localhost:3010/v0/';
     fetch(first + `dms?user=${username}&workspace=${workspace}`)
