@@ -18,13 +18,18 @@ const addMessage = async (username, message, time, replies, channel) => {
 }
 
 const getMessages = async (channel) => {
-    const select = 'SELECT * FROM messages WHERE curChannel = $1'
+    const select = `SELECT * FROM messages WHERE curChannel = $1`;
     const query = {
         text: select,
-        values: [ channel ]
+        values: [ channel ],
+    };
+    const ret = [];
+    const {rows} = await pool.query(query);
+    console.log({rows});
+    for (const row of rows) {
+        ret.push(row);
     }
-    const {rows} = pool.query(query);
-    return rows;
+    return ret;
 }
 
 exports.sendNew = async (req, res) => {
@@ -35,5 +40,7 @@ exports.sendNew = async (req, res) => {
 }
 
 exports.getAll = async (req, res) => {
-    await getMessages(req.query.channel);
+    console.log(req.query.channel);
+    const messages = await getMessages(req.query.channel);
+    res.status(200).send(messages);
 }

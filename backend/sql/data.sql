@@ -33,3 +33,9 @@ INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 5');
 DELETE FROM messages;
 --  messages (curChannel VARCHAR(32), curuser VARCHAR(32), sentTime TIMESTAMP WITHOUT TIME ZONE, replies SMALLINT, messagebody VARCHAR(32));
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'usainboltfan', '6:34PM', 0, 'Hello Everyone!');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'billy79', '6:35PM', 0, 'Hey Dude!');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'user1', '6:37PM', 0, 'Has anyone started this assignment yet?');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'billy79', '6:43PM', 0, 'yes! its a nightmare, start early or youll regret it');
+
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'xor134', '2:34AM', 0, 'Does he take late work?');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'billy79', '2:53AM', 0, 'Yes, with 20% taken off');

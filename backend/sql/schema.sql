@@ -18,4 +18,4 @@ CREATE TABLE channel (curWorkspace VARCHAR(32), channelName VARCHAR(32));
 
 DROP TABLE IF EXISTS messages;
 
-CREATE TABLE messages (curChannel VARCHAR(32), curuser VARCHAR(32), sentTime TIMESTAMP WITHOUT TIME ZONE, replies SMALLINT, messagebody VARCHAR(32));
+CREATE TABLE messages (curChannel VARCHAR(32), curuser VARCHAR(32), sentTime VARCHAR(32), replies SMALLINT, messagebody VARCHAR(32));
