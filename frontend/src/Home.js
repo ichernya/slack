@@ -215,6 +215,10 @@ function Home(props) {
     setSearchDisplay('none');
     setProfileDisplay('none');
     setChannelChosen('none');
+    setDirectDisplay('none');
+    setChannelDisplay('none');
+    setAddDMBox('none');
+    setAddChannelBox('none');
   }
   /**
   * @return {Array} - Direct Messages for Page
@@ -298,7 +302,7 @@ function Home(props) {
             type='text'
             onInput={(event)=>setAddedDM(event.target.value)}
             value={addedDM}
-            placeholder='Add Direct Message'
+            placeholder='Add Direct Message With User'
           />
         </div>
         <button id='channel-button' style={{display: addChannelBox}}
@@ -314,17 +318,29 @@ function Home(props) {
         <BottomNavigationAction icon={<HomeOutlinedIcon/>}
           onClick={()=>closeAll()}/>
         <BottomNavigationAction icon={<ForumOutlinedIcon/>}
-          onClick={()=> messageDisplay === 'block' ?
-            setMessageDisplay('none') : setMessageDisplay('block')}/>
+          onClick={()=> {
+            closeAll();
+            messageDisplay === 'block' ?
+              setMessageDisplay('none') : setMessageDisplay('block');
+          }}/>
         <BottomNavigationAction icon={<AlternateEmailIcon/>}
-          onClick={()=> atDisplay === 'block' ?
-            setAtDisplay('none') : setAtDisplay('block')}/>
+          onClick={()=> {
+            closeAll();
+            atDisplay === 'block' ?
+              setAtDisplay('none') : setAtDisplay('block');
+          }}/>
         <BottomNavigationAction icon={<SearchIcon/>}
-          onClick={()=> searchDisplay === 'block' ?
-            setSearchDisplay('none') : setSearchDisplay('block')}/>
+          onClick={()=> {
+            closeAll();
+            searchDisplay === 'block' ?
+              setSearchDisplay('none') : setSearchDisplay('block');
+          }}/>
         <BottomNavigationAction icon={<PermIdentityIcon/>}
-          onClick={()=> profileDisplay === 'block' ?
-            setProfileDisplay('none') : setProfileDisplay('block')}/>
+          onClick={()=> {
+            closeAll();
+            profileDisplay === 'block' ?
+              setProfileDisplay('none') : setProfileDisplay('block');
+          }}/>
       </BottomNavigation>
     </div>
   );
