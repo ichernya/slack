@@ -32,13 +32,18 @@ const allNames = async (user, workspace) => {
 }
 
 const allMessages = async (user, workspace, userTwo) => {
-    const select = 'SELECT * FROM dms WHERE (userOne = $1 OR $3) AND (userTwo = $1 OR $2) AND (curWorkspace = $2)'
+    const select = 'SELECT * FROM dms WHERE ((userOne = $1) AND (userTwo = $3)) OR ((userOne = $3) AND (userTwo = $1)) AND (curWorkspace = $2)'
     const query = {
         text: select,
         values: [ user, workspace, userTwo ]
     }
+    const ret = [];
     const {rows} = await pool.query(query);
-    console.log(rows);
+    for (const row of rows) {
+        console.log(row);
+        ret.push(row);
+    }
+    return ret;
 
 }
 
@@ -62,6 +67,8 @@ exports.getMessages = async (req, res) => {
     console.log(req.query.workspace);
     console.log(req.query.userSecond);
     const messages = await allMessages(req.query.user, req.query.workspace, req.query.userSecond)
+    if (messages) {res.status(200).json(messages);}
+    res.status(404).send();
 }
 
 exports.newMessage = async (req, res) => {
