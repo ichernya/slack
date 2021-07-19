@@ -94,8 +94,6 @@ function Home(props) {
   * @param {String} name - Name of Channel to Add
   */
   function addChannel(name) {
-    // const  = 'http://localhost:3010/v0/channels';
-    // const secondHalf = `curWorkspace=${workspace}?channelName=${name}`;
     fetch('http://localhost:3010/v0/channel', {
       method: 'POST',
       body: JSON.stringify({
