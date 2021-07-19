@@ -15,7 +15,6 @@ const findUser = async (user, pass) => {
         values: [user, pass],
     }
     const {rows} = await pool.query(query);
-    console.log(rows);
     if (rows.length > 0) {return rows;}
     else {return undefined;}
 };
@@ -23,7 +22,6 @@ const findUser = async (user, pass) => {
 exports.login = async (req, res) => {
     const usernameQuery = req.query.username;
     const passwordQuery = req.query.password;
-    console.log(usernameQuery, passwordQuery)
     const person = await findUser(usernameQuery, passwordQuery);
     if (person) {res.status(200).send();}
     else {res.status(404).send();}

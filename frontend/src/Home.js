@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Profile from './Profile.js';
 import Channel from './Channel.js';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -16,15 +16,17 @@ import AccountCircleOutlinedIcon from
   '@material-ui/icons/AccountCircleOutlined';
 import './Home.css';
 
-const username = 'Keaton Singer';
-const exampleWorkspaces = ['CSE183 Summer 2020', 'CSE183 Summer 2019'];
-// const exampleChannels = ['Assignment 1', 'Assignment 2'];
+const exampleWorkspaces = ['CSE183 Summer 2020', 'CSE183 Summer 2019',
+  'CSE183 Summer 2021'];
 const exampleDMs = ['Jimbo McGee', 'Dude Man'];
 
 /**
+* @param {Object} props - Props from parent
 * @return {JSX} - Home Page for Application
 */
-function Home() {
+function Home(props) {
+  const username = props.username;
+  const [workspace, setWorkspace] = React.useState('CSE183 Summer 2021');
   const [workspaceDisplay, setWorkspaceDisplay] = React.useState('none');
   const [channelDisplay, setChannelDisplay] = React.useState('none');
   const [channelChosen, setChannelChosen] = React.useState('none');
@@ -34,36 +36,33 @@ function Home() {
   const [atDisplay, setAtDisplay] = React.useState('none');
   const [searchDisplay, setSearchDisplay] = React.useState('none');
   const [profileDisplay, setProfileDisplay] = React.useState('none');
-  const [currentChannels, setCurrentChannels] = React.useState([]);
-  getChannels('CSE183 Summer 2021');
-  /**
-  * @param {String} workspace - Workspace User is in
-  */
-  function getChannels(workspace) {
+  const [currChannels, setCurrChannels] = React.useState([]);
+  useEffect(() => {
     const first = 'http://localhost:3010/v0/';
     fetch(first + `channel?Workspace=${workspace}`)
       .then(async (res) => {
+        const array = [];
         if (res.status === 200) {
           const channels = await res.json();
+          console.log(channels, '<--');
           for (let i = 0; i < channels.length; i++) {
-            const channel = createChannels(channels[i].channelname);
-            const existing = currentChannels;
-            existing.push(channel);
-            setCurrentChannels(existing);
+            const name = channels[i].channelname;
+            array.push(createChannel(name));
           }
-        } else {
-          alert('Channels: Something Went Wrong!');
         }
-      })
+        setCurrChannels(array);
+      },
+      )
       .catch((err) => err);
-  }
+  }, [workspace]);
   /**
   * @return {Array} - Channels for Page
   */
   function generateWorkspaces() {
     const workspaces = [];
     for (let i = 0; i < exampleWorkspaces.length; i++) {
-      workspaces[i] = <div id='workspace'>
+      workspaces[i] = <div id='workspace' onClick={
+        ()=>setWorkspace(exampleWorkspaces[i])}>
         <ChevronRightIcon id='workspace-arrow' fontSize='medium'/>
         {exampleWorkspaces[i]}
       </div>;
@@ -81,7 +80,7 @@ function Home() {
   * @param {String} name - Name of Channel
   * @return {JSX} - Channels for Page
   */
-  function createChannels(name) {
+  function createChannel(name) {
     return (
       <div id='channel' style={{display: channelDisplay}}
         onClick={()=>openChannel(name)}>
@@ -142,7 +141,7 @@ function Home() {
         <Profile username={username}/>
       </div>
       <div id='header'>
-        CSE183 Summer 2021
+        {workspace}
         <ArrowDropDownCircleIcon id='header-arrow'
           onClick={()=> workspaceDisplay === 'block' ?
             setWorkspaceDisplay('none') : setWorkspaceDisplay('block')}/>
@@ -157,7 +156,7 @@ function Home() {
               setChannelDisplay('none') : setChannelDisplay('block')}/>
           Channels
         </div>
-        {currentChannels}
+        {currChannels}
         <div id='channel' style={{display: channelDisplay}}>
           <AddBoxOutlinedIcon id='hash' fontSize='small'/>
           Add Channel

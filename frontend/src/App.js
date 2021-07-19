@@ -85,7 +85,7 @@ function App() {
             onClick={()=>changePage(username, password)}>Sign in</button>
         </div>
       </div>
-      <div style={{display: homeDisplay}}><Home /></div>
+      <div style={{display: homeDisplay}}><Home username={username}/></div>
     </div>
   );
 }
