@@ -33,8 +33,9 @@ app.use(
 app.get('/v0/dummy', dummy.get);
 app.get('/v0/users', users.login);
 app.post('/v0/messages', messages.sendNew);
-app.get('/v0/channel', channel.getAll)
-app.get('/v0/workspace', workspace.getChannels)
+app.get('/v0/channel', channel.getAll);
+app.get('/v0/workspace', workspace.getAllWork);
+app.get('/v0/messages', messages.getAll);
 // Your routes go here
 
 app.use((err, req, res, next) => {

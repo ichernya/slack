@@ -68,6 +68,29 @@ paths:
           description: conflict
       
   /messages:
+    get:
+      description: gets all messages that have that channel
+      parameters:
+        - in: query
+          name: channel
+          schema:
+            type: string
+          required: true
+          description: messages to return, blank for all
+      responses:
+        200: 
+          description: messages returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
     post:
       description: Add a new message
       requestBody:
@@ -218,10 +241,27 @@ components:
       type: object
       items:
          $ref: '#/components/schemas/MakeChannel'
-      
 
-    
     Workspace:
       type: array
       items: 
         $ref: '#/components/schemas/Channel'
+
+    Messages:
+      type: object
+      items:
+        $ref: '#/components/schemas/Message'
+
+    Message:
+      properties:
+        curChannel:
+          type: string
+        curuser:
+          type: string
+        sentTime:
+          type: string
+        replies:
+          type: integer
+        messagebody:
+          type: string
+        

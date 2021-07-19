@@ -24,3 +24,12 @@ INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'As
 INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'Assignment 4');
 INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'Assignment 5');
 
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 1');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 2');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 3');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 4');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 5');
+
+DELETE FROM messages;
+--  messages (curChannel VARCHAR(32), curuser VARCHAR(32), sentTime TIMESTAMP WITHOUT TIME ZONE, replies SMALLINT, messagebody VARCHAR(32));
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'usainboltfan', '6:34PM', 0, 'Hello Everyone!');

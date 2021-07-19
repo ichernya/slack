@@ -17,10 +17,23 @@ const addMessage = async (username, message, time, replies, channel) => {
     await pool.query(query);
 }
 
+const getMessages = async (channel) => {
+    const select = 'SELECT * FROM messages WHERE curChannel = $1'
+    const query = {
+        text: select,
+        values: [ channel ]
+    }
+    const {rows} = pool.query(query);
+    return rows;
+}
+
 exports.sendNew = async (req, res) => {
     await addMessage(req.body.username, req.body.message, 
                           req.body.time, req.body.replies,
                           req.body.channel);
     res.status(201).send(req.body);
+}
 
+exports.getAll = async (req, res) => {
+    await getMessages(req.query.channel);
 }

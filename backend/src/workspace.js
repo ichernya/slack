@@ -8,18 +8,16 @@ const pool = new Pool({
   password: process.env.POSTGRES_PASSWORD,
 });
 
-const grabChan = async (workspace) => {
-    console.log(workspace);
-    const select = 'SELECT container FROM workspace WHERE workspace = $1'
+const grabAll = async () => {
+    const select = 'SELECT * FROM workspace'
     const query = {
         text: select,
-        values: [ workspace ]
+        values: [  ]
     }
     const {rows} = await pool.query(query);
-    console.log(rows);
+    console.log(rows.workspaceName);
 }
 
-exports.getChannels = async (req, res) => {
-    console.log(req.query.workspace);
-    const channels = await grabChan(req.query.workspace);
+exports.getAllWork = async (req, res) => {
+    const channels = await grabAll();
 }

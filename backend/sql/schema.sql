@@ -10,7 +10,7 @@ CREATE TABLE users( username VARCHAR(32), passhash VARCHAR(32), information json
 
 DROP TABLE IF EXISTS workspace;
 
-CREATE TABLE workspace ( workspaceName VARCHAR(32), container VARCHAR(32) []);
+CREATE TABLE workspace ( workspaceName VARCHAR(32));
 
 DROP TABLE IF EXISTS channel;
 
