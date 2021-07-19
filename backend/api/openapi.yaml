@@ -224,6 +224,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    post:
+      description: creates a dm between two people
+      requestBody:
+        description: people 
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userone:
+                  type: string
+                workspace:
+                  type: string
+                usertwo:
+                  type: string
+      responses:
+        200:
+          description: user created
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      
   
   /dmMessages:
     get:
@@ -260,6 +285,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  
+    post:
+      description: creates a dm between two people
+      requestBody:
+        description: dm contents
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                workspace:
+                  type: string
+                userOne:
+                  type: string
+                userTwo:
+                  type: string
+                sentMessages:
+                  type: object
+                  properties:
+                    sent:
+                      type: string
+                    recieved:
+                      type: string
+                    time:
+                      type: string
+                    message:
+                      type: string
+      responses:
+        200:
+          description: Message was created
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        
 
 
 components:
@@ -379,4 +441,3 @@ components:
           type: string
         message:
           type: string
-

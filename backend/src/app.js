@@ -42,6 +42,8 @@ app.get('/v0/messages', messages.getAll);
 app.get('/v0/dms', dms.getAll);
 app.get('/v0/dmMessages', dms.getMessages);
 app.get('/v0/name', names.getName);
+app.post('/v0/dmMessages', dms.newMessage);
+app.post('/v0/dms', dms.addDm);
 
 app.use((err, req, res, next) => {
   res.status(err.status).json({

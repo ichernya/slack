@@ -15,6 +15,7 @@ const findName = async (user) => {
     values: [ user ],
   };
   const {rows} = await pool.query(query);
+  if (rows.length == 0) { return undefined; }
   return rows[0].information;
 };
 
