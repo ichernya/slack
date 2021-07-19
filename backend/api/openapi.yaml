@@ -164,6 +164,72 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /dms:
+    get:
+      description: returns dms between two people
+      parameters:
+        - in: query
+          name: user
+          schema:
+            type: string
+          required: true
+          description: user that is logged in
+        - in: query
+          name: workspace
+          schema:
+            type: string
+          required: true
+          description: workspace to look in
+      responses:
+        200:
+          description: returns all names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Names'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /dmMessages:
+    get:
+      description: returns dms between two people
+      parameters:
+        - in: query
+          name: user
+          schema:
+            type: string
+          required: true
+          description: user that is logged in
+        - in: query
+          name: workspace
+          schema:
+            type: string
+          required: true
+          description: workspace to look in
+        - in: query
+          name: userSecond
+          schema:
+            type: string
+          required: true
+          description: messages between two 
+      responses:
+        200:
+          description: returns all messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/arrayDm'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 
 components:
   schemas:
@@ -259,4 +325,26 @@ components:
           type: integer
         messagebody:
           type: string
-        
+
+    Names:
+        type: array
+        items:
+          type: string
+    
+    arrayDm:
+      type: array
+      items:
+        $ref: '#/components/schemas/messageDm'
+
+    messageDm:
+      type: object
+      properties:
+        sent:
+          type: string
+        recieved:
+          type: string
+        time:
+          type: string
+        message:
+          type: string
+
