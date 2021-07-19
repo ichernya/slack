@@ -203,7 +203,7 @@ function Home(props) {
           Direct Messages
         </div>
         {generateDMs()}
-        <div id='add-channel' style={{display: directDisplay}}>
+        <div id='dm' style={{display: directDisplay}}>
           <AddBoxOutlinedIcon id='hash' fontSize='small'/>
           Add Teammate
         </div>
