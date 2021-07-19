@@ -48,5 +48,5 @@ INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Lab 1', 'billy79', '6:43PM', 0, 'yes! its a nightmare, start early or youll regret it');
 
 DELETE FROM  dms;
-INSERT FROM dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'admin', '{"sent":"user1", "recieved":"admin", "time":"4:30PM", "message":"Hey! How are you doing?"}')
-INSERT FROM dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'admin', '{"sent":"admin", "recieved":"user1", "time":"4:31PM", "message":"Yo! I have been very busy, wbu?"}')
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'admin', '{"sent":"user1", "recieved":"admin", "time":"4:30PM", "message":"Hey! How are you doing?"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'admin', 'user1', '{"sent":"admin", "recieved":"user1", "time":"4:31PM", "message":"Yo! I have been very busy, wbu?"}');

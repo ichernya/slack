@@ -28,7 +28,8 @@ const allChannel = async ( curWorkspace) => {
 }
 
 exports.sendNew = async (req, res) => {
-    await addChannel(req.query.curWorkspace, req.query.channelName);
+    console.log(req.body.curWorkspace, req.body.channelName);
+    await addChannel(req.body.curWorkspace, req.body.channelName);
     res.status(201).send();
 }
 

@@ -8,14 +8,27 @@ const pool = new Pool({
   password: process.env.POSTGRES_PASSWORD,
 });
 
-const allNames = async = (user, workspace) => {
-    const select = 'SELECT * FROM dms WHERE workspace = $1 AND user = $2'
+const allNames = async (user, workspace) => {
+    const select = 'SELECT * FROM dms WHERE (curWorkspace = $1) AND (userOne = $2 OR userTwo = $2)'
     const query = {
         text: select,
         values: [ workspace, user ]
     }
-    const {rows} = pool.query(query);
-    console.log({rows});
+    const ret = []
+    const {rows} = await pool.query(query);
+    for (const row of rows) {
+        if (user == row.userone) {
+            if (!(ret.includes(row.usertwo))) {
+                ret.push(row.usertwo);
+            }
+        }
+        else {
+            if (!(ret.includes(row.userone))) {
+                ret.push(row.userone);
+            }
+        }
+    }
+    return ret;
 }
 
 const Allmessages = async = (user, workspace, userTwo) => {
@@ -26,7 +39,8 @@ exports.getAll = async (req, res) => {
     console.log(req.query.user);
     console.log(req.query.workspace);
     const names = await allNames(req.query.user, req.query.workspace);
-    
+    res.status(200).json(names);
+
 }
 
 exports.getMessages = async (req, res) => {
