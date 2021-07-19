@@ -82,7 +82,7 @@ function Home(props) {
   */
   function createChannel(name) {
     return (
-      <div id='channel' style={{display: channelDisplay}}
+      <div id='channel'
         onClick={()=>openChannel(name)}>
         <ChevronRightIcon id='hash' fontSize='small'/>
         {name}
@@ -156,10 +156,12 @@ function Home(props) {
               setChannelDisplay('none') : setChannelDisplay('block')}/>
           Channels
         </div>
-        {currChannels}
-        <div id='channel' style={{display: channelDisplay}}>
-          <AddBoxOutlinedIcon id='hash' fontSize='small'/>
-          Add Channel
+        <div style={{display: channelDisplay}}>
+          {currChannels}
+          <div id='channel' style={{display: channelDisplay}}>
+            <AddBoxOutlinedIcon id='hash' fontSize='small'/>
+            Add Channel
+          </div>
         </div>
         <div id='body-header'>
           <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'
