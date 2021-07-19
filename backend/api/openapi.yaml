@@ -90,7 +90,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
     post:
       description: Add a new message
       requestBody:
@@ -150,14 +149,7 @@ paths:
   
   /workspace:
     get:
-      description: returns the channels that a workspace has
-      parameters:
-        - in: query
-          name: workspace
-          schema:
-            type: string
-          required: true
-          description: which workspace to check
+      description: returns all workspaces
       responses:
         200:
           description: workspace response
@@ -245,7 +237,10 @@ components:
     Workspace:
       type: array
       items: 
-        $ref: '#/components/schemas/Channel'
+        type: object
+        properties:
+          workspaceName:
+            type: string
 
     Messages:
       type: object

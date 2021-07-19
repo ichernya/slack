@@ -15,9 +15,11 @@ const grabAll = async () => {
         values: [  ]
     }
     const {rows} = await pool.query(query);
-    console.log(rows.workspaceName);
+    return rows;
 }
 
 exports.getAllWork = async (req, res) => {
     const channels = await grabAll();
+    if (channels) {res.status(200).json(channels);}
+    else {res.status(404).send();}
 }

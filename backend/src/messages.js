@@ -42,5 +42,6 @@ exports.sendNew = async (req, res) => {
 exports.getAll = async (req, res) => {
     console.log(req.query.channel);
     const messages = await getMessages(req.query.channel);
-    res.status(200).send(messages);
+    if(messages) {res.status(200).send(messages);}
+    else {res.status(404).send();}
 }

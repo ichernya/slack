@@ -36,7 +36,6 @@ app.post('/v0/messages', messages.sendNew);
 app.get('/v0/channel', channel.getAll);
 app.get('/v0/workspace', workspace.getAllWork);
 app.get('/v0/messages', messages.getAll);
-// Your routes go here
 
 app.use((err, req, res, next) => {
   res.status(err.status).json({

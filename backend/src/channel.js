@@ -34,5 +34,6 @@ exports.sendNew = async (req, res) => {
 
 exports.getAll = async (req, res) => {
     const channels = await allChannel(req.query.Workspace);
-    res.status(200).json(channels);
+    if (channels) {res.status(200).json(channels);}
+    else {res.status(404).send();}
 }
