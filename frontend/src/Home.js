@@ -74,15 +74,21 @@ function Home(props) {
       .catch((err) => err);
   }, [workspace, username]);
   useEffect(() => {
-    const first = 'http://localhost:3010/v0/';
-    fetch(first + `workspace`)
-      .then(async (res) => {
-        if (res.status === 200) {
-          const workplaces = await res.json();
-          
-        }
-      })
-  })
+    console.log('hello');
+    fetch('http://localhost:3010/v0/name', {
+      method: 'PUT',
+      body: JSON.stringify({
+        user: username,
+        workspace: workspace,
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .catch((err) => err);
+  }, [workspace, username]);
   /**
   * @param {String} user - Username for user
   */
