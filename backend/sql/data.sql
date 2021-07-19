@@ -18,9 +18,9 @@ INSERT INTO users(username, passhash, information) VALUES ('enterlocks', 'k45314
 
 
 DELETE FROM channel;
-INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 SUMMER 2021', 'ASSIGNMENT 1');
-INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 SUMMER 2021', 'ASSIGNMENT 2');
-INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 SUMMER 2021', 'ASSIGNMENT 3');
-INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 SUMMER 2021', 'ASSIGNMENT 4');
-INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 SUMMER 2021', 'ASSIGNMENT 5');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'Assignment 1');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'Assignment 2');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'Assignment 3');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'Assignment 4');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'Assignment 5');
 

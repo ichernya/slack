@@ -24,7 +24,6 @@ const allChannel = async ( curWorkspace) => {
         values: [ curWorkspace ]
     }
     const {rows} = await pool.query(query);
-    console.log(rows);
     return rows;
 }
 
@@ -34,7 +33,6 @@ exports.sendNew = async (req, res) => {
 }
 
 exports.getAll = async (req, res) => {
-    console.log(req.query.Workspace);
     const channels = await allChannel(req.query.Workspace);
     res.status(200).json(channels);
 }
