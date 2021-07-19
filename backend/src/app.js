@@ -32,6 +32,7 @@ app.use(
 
 app.get('/v0/dummy', dummy.get);
 app.get('/v0/users', users.login);
+app.post('/v0/channel', channel.sendNew);
 app.post('/v0/messages', messages.sendNew);
 app.get('/v0/channel', channel.getAll);
 app.get('/v0/workspace', workspace.getAllWork);
