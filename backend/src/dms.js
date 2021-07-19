@@ -32,7 +32,12 @@ const allNames = async (user, workspace) => {
 }
 
 const Allmessages = async = (user, workspace, userTwo) => {
-
+    const select = 'SELECT * FROMS dms WHERE (userone = $1 OR usertwo = $3) AND (workspace = $2)'
+    const query = {
+        text: select,
+        values: [ user, workspace, userTwo ]
+    }
+    
 }
 
 exports.getAll = async (req, res) => {
