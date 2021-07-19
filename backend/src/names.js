@@ -19,6 +19,13 @@ const findName = async (user) => {
   return rows[0].information;
 };
 
+const updateName = async (user, workspace) => {
+    const update = 'UPDATE users SET information = $1'
+    const query = {
+        text: update,
+        values: [ workspace]
+    }
+}
 exports.getName = async (req, res) => {
     const person = await findName(req.query.user);
     if (person) {res.status(200).send(person); }
@@ -27,5 +34,7 @@ exports.getName = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-    console.log(req.query);
+    const user = findName(req.query.user);
+    console.log(user)
+    console.log(req.query.user, req.query.workspace);
 }

@@ -73,6 +73,16 @@ function Home(props) {
       )
       .catch((err) => err);
   }, [workspace, username]);
+  useEffect(() => {
+    const first = 'http://localhost:3010/v0/';
+    fetch(first + `workspace`)
+      .then(async (res) => {
+        if (res.status === 200) {
+          const workplaces = await res.json();
+          
+        }
+      })
+  })
   /**
   * @param {String} user - Username for user
   */
