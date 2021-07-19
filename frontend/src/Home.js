@@ -59,6 +59,8 @@ function Home(props) {
       .catch((err) => err);
   }, [workspace]);
   useEffect(() => {
+    console.log(workspace, 'Initiated');
+    setCurrDMs([]);
     const first = 'http://localhost:3010/v0/';
     fetch(first + `dms?user=${username}&workspace=${workspace}`)
       .then(async (res) => {
@@ -141,6 +143,39 @@ function Home(props) {
       .catch((err) => err);
     const addedChannel = createChannel(name);
     setCurrChannels((array) => [...array, addedChannel]);
+  }
+  /**
+  * @param {String} user - Name of user to Add
+  */
+  function addDM(user) {
+    const first = 'http://localhost:3010/v0/';
+    fetch(first + `name?user=${user}`)
+      .then(async (res) => {
+        const userData = await res.json();
+        if (res.status !== 200 || user === username) {
+          alert('Cannot Locate User!');
+          return;
+        } else {
+          const dmName = userData.firstName + ' ' + userData.lastName;
+          fetch('http://localhost:3010/v0/dms', {
+            method: 'POST',
+            body: JSON.stringify({
+              userone: username,
+              workspace: workspace,
+              usertwo: user,
+            }),
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+          })
+            .then((res) => res.json())
+            .catch((err) => err);
+          const addedDM = createDM(dmName);
+          setCurrDMs((array) => [...array, addedDM]);
+        }
+      })
+      .catch((err) => alert('Cannot Locate User!'));
   }
   /**
   */
@@ -270,8 +305,8 @@ function Home(props) {
           onClick={()=>addChannel(addedChannel)}>
           Add
         </button>
-        <button id='channel-button' style={{display: addDMBox}}
-          onClick={()=>addChannel(addedChannel)}>
+        <button id='dm-button' style={{display: addDMBox}}
+          onClick={()=>addDM(addedDM)}>
           Add
         </button>
       </div>

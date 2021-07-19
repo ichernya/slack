@@ -136,7 +136,7 @@
   margin-left: 1%;
 }
 
-#channel-button {
+#channel-button, #dm-button {
   border-radius: 1px;
   position: fixed;
   bottom: 0%;
@@ -146,7 +146,7 @@
   margin-bottom: 60px;
 }
 
-#channel-button:active {
+#channel-button:active, #dm-button:active {
   background-color: black;
   color: white
 }
