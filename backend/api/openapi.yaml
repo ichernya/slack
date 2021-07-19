@@ -98,6 +98,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+    put:
+      description: updates the last workspace of a user
+      parameters:
+        - name: user
+          in: query
+          description: user to update
+          required: true
+          schema:
+            type: string
+        - name: workspace
+          in: query
+          description: name of recent workspace
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: changed workspace
+        404:
+          description: error
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
   /messages:
     get:
       description: gets all messages that have that channel

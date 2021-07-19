@@ -25,3 +25,7 @@ exports.getName = async (req, res) => {
     res.status(404).send();
 
 };
+
+exports.updateUser = async (req, res) => {
+    console.log(req.query);
+}
