@@ -30,7 +30,7 @@
 }
 
 #header {
-  position: absolute;
+  position: fixed;
   top: 0%;
   left: 0%;
   right: 0%;
@@ -76,8 +76,10 @@
 #channel-body {
   background-color: white;
   margin-top: 40px;
-  height: 100%;
-  position: fixed;
+  position: absolute;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
   top: 0%;
   left: 0%;
   right: 0%;
@@ -114,6 +116,38 @@
   padding-top: 4px;
   padding-left: 26px;
   padding-right: 5px;
+}
+
+#channel-adder {
+  position: fixed;
+  bottom: 0%;
+  height: 60px;
+  width: 100%;
+  left: 0%;
+  right: 0%;
+  z-index: 10;
+  margin-bottom: 40px;
+}
+
+#add-channel {
+  padding-left: 10px;
+  width: 82%;
+  margin-left: 1%;
+}
+
+#channel-button {
+  border-radius: 1px;
+  position: fixed;
+  bottom: 0%;
+  height: 36px;
+  right: 1%;
+  z-index: 10;
+  margin-bottom: 64px;
+}
+
+#channel-button:active {
+  background-color: black;
+  color: white
 }
 
 #navigation {

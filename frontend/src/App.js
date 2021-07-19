@@ -31,8 +31,8 @@ import './App.css';
 * @return {object} JSX
 */
 function App() {
-  const [loginDisplay, setLoginDisplay] = React.useState('block');
-  const [homeDisplay, setHomeDisplay] = React.useState('none');
+  const [loginDisplay, setLoginDisplay] = React.useState('none');
+  const [homeDisplay, setHomeDisplay] = React.useState('block');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   /**

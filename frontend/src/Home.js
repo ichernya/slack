@@ -37,6 +37,8 @@ function Home(props) {
   const [searchDisplay, setSearchDisplay] = React.useState('none');
   const [profileDisplay, setProfileDisplay] = React.useState('none');
   const [currChannels, setCurrChannels] = React.useState([]);
+  const [addedChannel, setAddedChannel] = React.useState('');
+  const [addBox, setAddBox] = React.useState('none');
   useEffect(() => {
     const first = 'http://localhost:3010/v0/';
     fetch(first + `channel?Workspace=${workspace}`)
@@ -44,7 +46,6 @@ function Home(props) {
         const array = [];
         if (res.status === 200) {
           const channels = await res.json();
-          console.log(channels, '<--');
           for (let i = 0; i < channels.length; i++) {
             const name = channels[i].channelname;
             array.push(createChannel(name));
@@ -88,6 +89,37 @@ function Home(props) {
         {name}
       </div>
     );
+  }
+  /**
+  * @param {String} name - Name of Channel to Add
+  */
+  function addChannel(name) {
+    // const  = 'http://localhost:3010/v0/channels';
+    // const secondHalf = `curWorkspace=${workspace}?channelName=${name}`;
+    fetch('http://localhost:3010/v0/channel', {
+      method: 'POST',
+      body: JSON.stringify({
+        curWorkspace: workspace,
+        channelName: name,
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .catch((err) => err);
+    const addedChannel = createChannel(name);
+    setCurrChannels((array) => [...array, addedChannel]);
+  }
+  /**
+  */
+  function closeChannel() {
+    channelDisplay === 'block' ? setChannelDisplay('none') :
+      setChannelDisplay('block');
+    if (addBox === 'block') {
+      setAddBox('none');
+    }
   }
   /**
   * @return {Array} - Direct Messages for Page
@@ -152,14 +184,15 @@ function Home(props) {
       <div id='channel-body'>
         <div id='body-header'>
           <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'
-            onClick={()=> channelDisplay === 'block' ?
-              setChannelDisplay('none') : setChannelDisplay('block')}/>
+            onClick={()=>closeChannel()}/>
           Channels
         </div>
         <div style={{display: channelDisplay}}>
           {currChannels}
           <div id='channel' style={{display: channelDisplay}}>
-            <AddBoxOutlinedIcon id='hash' fontSize='small'/>
+            <AddBoxOutlinedIcon id='hash' fontSize='small'
+              onClick={()=>addBox === 'none' ? setAddBox('block') :
+                setAddBox('none')}/>
             Add Channel
           </div>
         </div>
@@ -174,6 +207,19 @@ function Home(props) {
           <AddBoxOutlinedIcon id='hash' fontSize='small'/>
           Add Teammate
         </div>
+        <div id='channel-adder' style={{display: addBox}}>
+          <input
+            id='add-channel'
+            type='text'
+            onInput={(event)=>setAddedChannel(event.target.value)}
+            value={addedChannel}
+            placeholder='Add Channel'
+          />
+        </div>
+        <button id='channel-button' style={{display: addBox}}
+          onClick={()=>addChannel(addedChannel)}>
+          Add
+        </button>
       </div>
       <BottomNavigation id='navigation'>
         <BottomNavigationAction icon={<HomeOutlinedIcon/>}
