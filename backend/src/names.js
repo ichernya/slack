@@ -36,8 +36,8 @@ exports.getName = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-    const user = await findName(req.query.user);
-    user.workspace = req.query.workspace;
-    await updateName(req.query.user, user);
+    const user = await findName(req.body.user);
+    user.workspace = req.body.workspace;
+    await updateName(req.body.user, user);
     res.status(200).send();
 }

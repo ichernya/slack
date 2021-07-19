@@ -100,19 +100,13 @@ paths:
 
     put:
       description: updates the last workspace of a user
-      parameters:
-        - name: user
-          in: query
-          description: user to update
-          required: true
-          schema:
-            type: string
-        - name: workspace
-          in: query
-          description: name of recent workspace
-          required: true
-          schema:
-            type: string
+      requestBody:
+        description: user and workspace
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/putWorkspace'
       responses:
         200:
           description: changed workspace
@@ -467,4 +461,12 @@ components:
         time:
           type: string
         message:
+          type: string
+    
+    putWorkspace:
+      type: object
+      properties:
+        user:
+          type: string
+        workspace:
           type: string

@@ -19,6 +19,7 @@ INSERT INTO users(username, passhash, information) VALUES ('admin', 'javascript'
 DELETE FROM workspace;
 INSERT INTO workspace(workspaceName) VALUES ('CSE183 Summer 2021');
 INSERT INTO workspace(workspaceName) VALUES ('CSE112');
+INSERT INTO workspace(workspaceName) VALUES ('CSE13');
 
 DELETE FROM channel;
 INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE183 Summer 2021', 'Assignment 1');
@@ -33,6 +34,10 @@ INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 3');
 INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 4');
 INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE112', 'Lab 5');
 
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE13', 'Project 1');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE13', 'Project 2');
+INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE13', 'Project 3');
+
 DELETE FROM messages;
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'usainboltfan', '6:34PM', 0, 'Hello Everyone!');
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'billy79', '6:35PM', 0, 'Hey Dude!');
@@ -40,6 +45,11 @@ INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'billy79', '6:43PM', 0, 'yes! its a nightmare, start early or youll regret it');
 
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'xor134', '2:34AM', 0, 'Does he take late work?');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'billy79', '2:53AM', 0, 'Yes, with 20% taken off');
+
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 3', 'vadae', '5:34PM', 0, 'Does anyone want to partner up for this one?');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 3', 'fencesye', '5:53PM', 0, 'Also looking for partners, have 5 years of experience');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'admin', '2:34AM', 0, 'Looking');
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'billy79', '2:53AM', 0, 'Yes, with 20% taken off');
 
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Lab 1', 'usainboltfan', '6:34PM', 0, 'Hello Everyone!');
