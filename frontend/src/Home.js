@@ -37,8 +37,10 @@ function Home(props) {
   const [profileDisplay, setProfileDisplay] = React.useState('none');
   const [currChannels, setCurrChannels] = React.useState([]);
   const [addedChannel, setAddedChannel] = React.useState('');
+  const [addedDM, setAddedDM] = React.useState('');
   const [currDMs, setCurrDMs] = React.useState([]);
-  const [addBox, setAddBox] = React.useState('none');
+  const [addChannelBox, setAddChannelBox] = React.useState('none');
+  const [addDMBox, setAddDMBox] = React.useState('none');
   useEffect(() => {
     const first = 'http://localhost:3010/v0/';
     fetch(first + `channel?Workspace=${workspace}`)
@@ -145,8 +147,17 @@ function Home(props) {
   function closeChannel() {
     channelDisplay === 'block' ? setChannelDisplay('none') :
       setChannelDisplay('block');
-    if (addBox === 'block') {
-      setAddBox('none');
+    if (addChannelBox === 'block') {
+      setAddChannelBox('none');
+    }
+  }
+  /**
+  */
+  function closeDM() {
+    directDisplay === 'block' ? setDirectDisplay('none') :
+      setDirectDisplay('block');
+    if (addDMBox === 'block') {
+      setAddDMBox('none');
     }
   }
   /**
@@ -218,25 +229,26 @@ function Home(props) {
           {currChannels}
           <div id='channel'>
             <AddBoxOutlinedIcon id='hash' fontSize='small'
-              onClick={()=>addBox === 'none' ? setAddBox('block') :
-                setAddBox('none')}/>
+              onClick={()=>addChannelBox === 'none' ?
+                setAddChannelBox('block') : setAddChannelBox('none')}/>
             Add Channel
           </div>
         </div>
         <div id='body-header'>
           <ArrowDropDownCircleIcon id='body-arrow' fontSize='small'
-            onClick={()=> directDisplay === 'block' ? setDirectDisplay('none') :
-              setDirectDisplay('block')}/>
+            onClick={()=> closeDM()}/>
           Direct Messages
         </div>
         <div style={{display: directDisplay}}>
           {currDMs}
           <div id='dm'>
-            <AddBoxOutlinedIcon id='hash' fontSize='small'/>
+            <AddBoxOutlinedIcon id='hash' fontSize='small'
+              onClick={()=>addDMBox === 'none' ?
+                setAddDMBox('block') : setAddDMBox('none')}/>
             Add Teammate
           </div>
         </div>
-        <div id='channel-adder' style={{display: addBox}}>
+        <div id='channel-adder' style={{display: addChannelBox}}>
           <input
             id='add-channel'
             type='text'
@@ -245,7 +257,20 @@ function Home(props) {
             placeholder='Add Channel'
           />
         </div>
-        <button id='channel-button' style={{display: addBox}}
+        <div id='channel-adder' style={{display: addDMBox}}>
+          <input
+            id='add-channel'
+            type='text'
+            onInput={(event)=>setAddedDM(event.target.value)}
+            value={addedDM}
+            placeholder='Add Direct Message'
+          />
+        </div>
+        <button id='channel-button' style={{display: addChannelBox}}
+          onClick={()=>addChannel(addedChannel)}>
+          Add
+        </button>
+        <button id='channel-button' style={{display: addDMBox}}
           onClick={()=>addChannel(addedChannel)}>
           Add
         </button>
