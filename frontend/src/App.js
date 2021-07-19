@@ -78,7 +78,7 @@ function App() {
         </div>
         <div>
           <span id='remember-container'>
-            <span id='checkbox'><Checkbox color='white'/></span>
+            <span id='checkbox'><Checkbox/></span>
             <span id='remember-text'>Remember me</span>
           </span>
           <button id='sign-button'

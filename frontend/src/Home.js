@@ -18,7 +18,6 @@ import './Home.css';
 
 const exampleWorkspaces = ['CSE183 Summer 2020', 'CSE183 Summer 2019',
   'CSE183 Summer 2021'];
-const exampleDMs = ['Jimbo McGee', 'Dude Man'];
 
 /**
 * @param {Object} props - Props from parent
@@ -38,6 +37,7 @@ function Home(props) {
   const [profileDisplay, setProfileDisplay] = React.useState('none');
   const [currChannels, setCurrChannels] = React.useState([]);
   const [addedChannel, setAddedChannel] = React.useState('');
+  const [currDMs, setCurrDMs] = React.useState([]);
   const [addBox, setAddBox] = React.useState('none');
   useEffect(() => {
     const first = 'http://localhost:3010/v0/';
@@ -56,6 +56,36 @@ function Home(props) {
       )
       .catch((err) => err);
   }, [workspace]);
+  useEffect(() => {
+    const first = 'http://localhost:3010/v0/';
+    fetch(first + `dms?user=${username}&workspace=${workspace}`)
+      .then(async (res) => {
+        if (res.status === 200) {
+          const users = await res.json();
+          for (let i = 0; i < users.length; i++) {
+            fetchFullName(users[i]);
+          }
+        }
+      },
+      )
+      .catch((err) => err);
+  }, [workspace, username]);
+  /**
+  * @param {String} user - Username for user
+  */
+  function fetchFullName(user) {
+    let fullName;
+    const first = 'http://localhost:3010/v0/';
+    fetch(first + `name?user=${user}`)
+      .then(async (res) => {
+        const userData = await res.json();
+        fullName = userData.firstName + ' ' + userData.lastName;
+        const addedDM = createDM(fullName);
+        setCurrDMs((array) => [...array, addedDM]);
+      },
+      )
+      .catch((err) => err);
+  }
   /**
   * @return {Array} - Channels for Page
   */
@@ -120,17 +150,16 @@ function Home(props) {
     }
   }
   /**
+  * @param {String} name - Full name of user
   * @return {Array} - Direct Messages for Page
   */
-  function generateDMs() {
-    const DMs = [];
-    for (let i = 0; i < exampleDMs.length; i++) {
-      DMs[i] = <div id='dm' style={{display: directDisplay}}>
+  function createDM(name) {
+    return (
+      <div id='dm'>
         <AccountCircleOutlinedIcon id='hash' fontSize='small'/>
-        {exampleDMs[i]}
-      </div>;
-    }
-    return DMs;
+        {name}
+      </div>
+    );
   }
   /**
   */
@@ -187,7 +216,7 @@ function Home(props) {
         </div>
         <div style={{display: channelDisplay}}>
           {currChannels}
-          <div id='channel' style={{display: channelDisplay}}>
+          <div id='channel'>
             <AddBoxOutlinedIcon id='hash' fontSize='small'
               onClick={()=>addBox === 'none' ? setAddBox('block') :
                 setAddBox('none')}/>
@@ -200,10 +229,12 @@ function Home(props) {
               setDirectDisplay('block')}/>
           Direct Messages
         </div>
-        {generateDMs()}
-        <div id='dm' style={{display: directDisplay}}>
-          <AddBoxOutlinedIcon id='hash' fontSize='small'/>
-          Add Teammate
+        <div style={{display: directDisplay}}>
+          {currDMs}
+          <div id='dm'>
+            <AddBoxOutlinedIcon id='hash' fontSize='small'/>
+            Add Teammate
+          </div>
         </div>
         <div id='channel-adder' style={{display: addBox}}>
           <input
