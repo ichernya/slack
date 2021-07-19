@@ -21,10 +21,10 @@ const findName = async (user) => {
 };
 
 const updateName = async (user, workspace) => {
-    const update = 'UPDATE users SET information = $1'
+    const update = 'UPDATE users SET information = $1 WHERE username = $2'
     const query = {
         text: update,
-        values: [ workspace]
+        values: [ workspace, user]
     }
     await pool.query(query);
 }
@@ -36,8 +36,13 @@ exports.getName = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
+    const works = req.body.workspace;
     const user = await findName(req.body.user);
-    user.workspace = req.body.workspace;
-    await updateName(req.body.user, user);
-    res.status(200).send();
+    if (user){
+        user.workspace = works;
+        console.log(user)
+        await updateName(req.body.user, user);
+        res.status(200).send();
+    }
+    res.status(404).send();
 }
