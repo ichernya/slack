@@ -48,7 +48,7 @@ paths:
             type: string
       responses:
         200:
-          description: Username and Password correct
+          description: user logged in
         404:
           description: Wrong Credentials
 
@@ -66,7 +66,38 @@ paths:
           description: created
         409:
           description: conflict
-      
+
+  /name:
+    get:
+      description: returns name of someone
+      parameters:
+        - in: query
+          name: user
+          schema:
+            type: string
+          required: true
+          description: person to return
+      responses:
+        200: 
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  status:
+                    type: string
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
   /messages:
     get:
       description: gets all messages that have that channel

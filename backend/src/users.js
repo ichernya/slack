@@ -15,7 +15,7 @@ const findUser = async (user, pass) => {
         values: [user, pass],
     }
     const {rows} = await pool.query(query);
-    if (rows.length > 0) {return rows;}
+    if (rows.length > 0) {return rows}
     else {return undefined;}
 };
 
