@@ -1,4 +1,5 @@
 const {Pool} = require('pg');
+const { login } = require('./users');
 
 const pool = new Pool({
   host: 'localhost',
@@ -25,6 +26,7 @@ const updateName = async (user, workspace) => {
         text: update,
         values: [ workspace]
     }
+    await pool.query(query);
 }
 exports.getName = async (req, res) => {
     const person = await findName(req.query.user);
@@ -34,7 +36,8 @@ exports.getName = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-    const user = findName(req.query.user);
-    console.log(user)
-    console.log(req.query.user, req.query.workspace);
+    const user = await findName(req.query.user);
+    user.workspace = req.query.workspace;
+    await updateName(req.query.user, user);
+    res.status(200).send();
 }
