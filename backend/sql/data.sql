@@ -39,18 +39,18 @@ INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE13', 'Project 2');
 INSERT INTO channel(curWorkspace, channelName) VALUES ('CSE13', 'Project 3');
 
 DELETE FROM messages;
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'usainboltfan', '6:34PM', 0, 'Hello Everyone!');
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'billy79', '6:35PM', 0, 'Hey Dude!');
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'user1', '6:37PM', 0, 'Has anyone started this assignment yet?');
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'billy79', '6:43PM', 0, 'yes! its a nightmare, start early or youll regret it');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'usainboltfan', '2021-07-20T05:20:30Z', 0, 'Hello Everyone!');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'billy79', '2021-07-20T05:20:30Z', 0, 'Hey Dude!');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'user1', '2021-07-20T05:20:30Z', 0, 'Has anyone started this assignment yet?');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 1', 'billy79', '2021-07-20T05:20:30Z', 0, 'yes! its a nightmare, start early or youll regret it');
 
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'xor134', '2:34AM', 0, 'Does he take late work?');
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'billy79', '2:53AM', 0, 'Yes, with 20% taken off');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'xor134', '2021-07-20T05:20:30Z', 0, 'Does he take late work?');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'billy79', '2021-07-20T05:20:30Z', 0, 'Yes, with 20% taken off');
 
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 3', 'vadae', '5:34PM', 0, 'Does anyone want to partner up for this one?');
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 3', 'fencesye', '5:53PM', 0, 'Also looking for partners, have 5 years of experience');
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'admin', '2:34AM', 0, 'Looking');
-INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'billy79', '2:53AM', 0, 'Yes, with 20% taken off');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 3', 'vadae', '2021-07-20T05:20:30Z', 0, 'Does anyone want to partner up for this one?');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 3', 'fencesye', '2021-07-20T05:20:30Z', 0, 'Also looking for partners, have 5 years of experience');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'admin', '2021-07-20T05:20:30Z', 0, 'Looking');
+INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Assignment 2', 'billy79', '2021-07-20T05:20:30Z', 0, 'Yes, with 20% taken off');
 
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Lab 1', 'usainboltfan', '6:34PM', 0, 'Hello Everyone!');
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Lab 1', 'billy79', '6:35PM', 0, 'Hey Dude!');
@@ -58,18 +58,18 @@ INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES
 INSERT INTO messages(curChannel, curuser, sentTime, replies, messagebody) VALUES ('Lab 1', 'billy79', '6:43PM', 0, 'yes! its a nightmare, start early or youll regret it');
 
 DELETE FROM  dms;
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'admin', '{"sent":"user1", "recieved":"admin", "time":"4:30PM", "message":"Hey! How are you doing?"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'admin', 'user1', '{"sent":"admin", "recieved":"user1", "time":"4:31PM", "message":"Yo! I have been very busy, wbu?"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'admin', '{"sent":"user1", "recieved":"admin", "time":"4:35PM", "message":"Busy as well hows the kids?"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'admin', 'user1', '{"sent":"admin", "recieved":"user1", "time":"4:40PM", "message":"Sick"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'usainboltfan', '{"sent":"user1", "recieved":"usainboltfan", "time":"6:30PM", "message":"Hey! Have you seen the new movie?"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'usainboltfan', 'user1', '{"sent":"usainboltfan", "recieved":"user1", "time":"6:31PM", "message":"No I havent, lets go on the weekend?"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'usainboltfan', '{"sent":"user1", "recieved":"usainboltfan", "time":"7:35PM", "message":"Ok, Im free on saturday all day"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'usainboltfan', 'user1', '{"sent":"usainboltfan", "recieved":"user1", "time":"4:40PM", "message":"Sick"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'fencesye', '{"sent":"user1", "recieved":"fencesye", "time":"6:15PM", "message":"AHHHHHHHHH"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'fencesye', 'user1', '{"sent":"fencesye", "recieved":"user1", "time":"6:31PM", "message":"AHHHHHHHHHHHHHHH"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'fencesye', '{"sent":"user1", "recieved":"fencesye", "time":"7:35PM", "message":"AHHHHHHHHHHHHHHHHHHHHHHHHH"}');
-INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'fencesye', 'user1', '{"sent":"fencesye", "recieved":"user1", "time":"8:10PM", "message":"AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'admin', '{"sent":"user1", "recieved":"admin", "time":"2021-07-20T05:20:30Z", "message":"Hey! How are you doing?"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'admin', 'user1', '{"sent":"admin", "recieved":"user1", "time":"2021-07-20T05:30:30Z", "message":"Yo! I have been very busy, wbu?"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'admin', '{"sent":"user1", "recieved":"admin", "time":"2021-07-20T05:44:30Z", "message":"Busy as well hows the kids?"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'admin', 'user1', '{"sent":"admin", "recieved":"user1", "time":"2021-07-20T05:55:30Z", "message":"Sick"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'usainboltfan', '{"sent":"user1", "recieved":"usainboltfan", "time":"2021-07-20T07:21:30Z", "message":"Hey! Have you seen the new movie?"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'usainboltfan', 'user1', '{"sent":"usainboltfan", "recieved":"user1", "time":"2021-07-20T09:25:30Z", "message":"No I havent, lets go on the weekend?"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'usainboltfan', '{"sent":"user1", "recieved":"usainboltfan", "time":"2021-07-20T10:29:30Z", "message":"Ok, Im free on saturday all day"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'usainboltfan', 'user1', '{"sent":"usainboltfan", "recieved":"user1", "time":"2021-07-20T10:41:30Z", "message":"Sick"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'fencesye', '{"sent":"user1", "recieved":"fencesye", "time":"2021-07-20T05:25:30Z", "message":"AHHHHHHHHH"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'fencesye', 'user1', '{"sent":"fencesye", "recieved":"user1", "time":"2021-07-20T06:32:30Z", "message":"AHHHHHHHHHHHHHHH"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'fencesye', '{"sent":"user1", "recieved":"fencesye", "time":"2021-07-20T07:21:30Z", "message":"AHHHHHHHHHHHHHHHHHHHHHHHHH"}');
+INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'fencesye', 'user1', '{"sent":"fencesye", "recieved":"user1", "time":"2021-07-20T10:23:30Z", "message":"AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"}');
 
 
 DELETE FROM replies;
