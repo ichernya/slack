@@ -73,7 +73,6 @@ exports.newMessage = async (req, res) => {
 }
 
 exports.addDm = async (req, res) => {
-    console.log(req.body);
     const message = {};
     await postDm(req.body.userone, req.body.workspace, req.body.usertwo, message);
     res.status(200).send();
