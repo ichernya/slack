@@ -92,17 +92,12 @@ function Dm(props) {
       <div id='message'>
       <div id='pic'>
         <AccountCircleIcon fontSize='inherit' id='profile-pic'/>
-<<<<<<< Updated upstream
-        <div>
-          {displayName}
-=======
         </div>
         <div id = 'container'>
         <br>
         </br>
         <div id ='name' class='child'>
         {displayName}
->>>>>>> Stashed changes
         </div>
         <div id ='time' class='child'>
           {displayTime}
