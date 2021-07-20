@@ -66,3 +66,7 @@ INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Su
 INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'usainboltfan', 'user1', '{"sent":"usainboltfan", "recieved":"user1", "time":"6:31PM", "message":"No I havent, lets go on the weekend?"}');
 INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'user1', 'usainboltfan', '{"sent":"user1", "recieved":"usainboltfan", "time":"7:35PM", "message":"Ok, Im free on saturday all day"}');
 INSERT INTO dms(curWorkspace, userOne, userTwo, sentMessages) VALUES ('CSE183 Summer 2021', 'usainboltfan', 'user1', '{"sent":"usainboltfan", "recieved":"user1", "time":"4:40PM", "message":"Sick"}');
+
+
+DELETE FROM replies;
+INSERT INTO replies(idx, sentMessages) VALUES ('119e34aa-8b14-4c97-9252-4f8d934352c2', '{"sent":"user1", "time":"4:30PM", "message":"No, im putting it off lol"}');

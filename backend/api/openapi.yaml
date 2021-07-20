@@ -342,7 +342,57 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-        
+  
+  /replies:
+    get:
+      description: gets all the replies, to the message with an idx
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          required: true
+          description: id to search for in replies
+      responses:
+        200:
+          description: all replies returned
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+        description: create a new reply, on a message click
+        requestBody:
+          description: id, message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  sentMessages:
+                    type: object
+                    properties:
+                      sent:
+                        type: string
+                      time:
+                        type: string
+                      message:
+                        type: string
+        responses:
+          201:
+            description: succesfully created reply
+          default:
+            description: Unexpected Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+
 
 
 components:

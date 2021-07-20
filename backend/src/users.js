@@ -1,4 +1,5 @@
 const {Pool} = require('pg');
+const jwt = require('jsonwebtoken');
 
 const pool = new Pool({
   host: 'localhost',

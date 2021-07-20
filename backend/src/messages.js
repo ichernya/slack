@@ -27,6 +27,7 @@ const getMessages = async (channel) => {
     const {rows} = await pool.query(query);
     console.log({rows});
     for (const row of rows) {
+        console.log(row);
         ret.push(row);
     }
     return ret;
