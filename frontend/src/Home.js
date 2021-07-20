@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Profile from './Profile.js';
 import Channel from './Channel.js';
+import Dm from './Dm.js';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -22,12 +23,15 @@ import './Home.css';
 */
 function Home(props) {
   const username = props.username;
+  const [sideName, setSideName] = React.useState('');
   const [workspaces, setWorkspaces] = React.useState([]);
   const [workspace, setWorkspace] = React.useState('');
   const [workspaceDisplay, setWorkspaceDisplay] = React.useState('none');
   const [channelDisplay, setChannelDisplay] = React.useState('none');
   const [channelChosen, setChannelChosen] = React.useState('none');
+  const [dmChosen, setDMChosen] = React.useState('none');
   const [channelName, setChannelName] = React.useState('');
+  const [dmName, setDMName] = React.useState('');
   const [directDisplay, setDirectDisplay] = React.useState('none');
   const [messageDisplay, setMessageDisplay] = React.useState('none');
   const [atDisplay, setAtDisplay] = React.useState('none');
@@ -132,7 +136,7 @@ function Home(props) {
       .then(async (res) => {
         const userData = await res.json();
         fullName = userData.firstName + ' ' + userData.lastName;
-        const addedDM = createDM(fullName);
+        const addedDM = createDM(fullName, user);
         setCurrDMs((array) => [...array, addedDM]);
       },
       )
@@ -156,6 +160,15 @@ function Home(props) {
   function openChannel(name) {
     setChannelChosen('block');
     setChannelName(name);
+  }
+  /**
+  * @param {String} fullName - Full name of Side Username
+  * @param {String} side - Name of Side Username
+  */
+  function openDM(fullName, side) {
+    setDMChosen('block');
+    setDMName(fullName);
+    setSideName(side);
   }
   /**
   * @param {String} name - Name of Channel
@@ -217,7 +230,7 @@ function Home(props) {
           })
             .then((res) => res.json())
             .catch((err) => err);
-          const addedDM = createDM(dmName);
+          const addedDM = createDM(dmName, user);
           setCurrDMs((array) => [...array, addedDM]);
         }
       })
@@ -243,11 +256,13 @@ function Home(props) {
   }
   /**
   * @param {String} name - Full name of user
+  * @param {String} side - Name of receiving user
   * @return {Array} - Direct Messages for Page
   */
-  function createDM(name) {
+  function createDM(name, side) {
     return (
-      <div id='dm'>
+      <div id='dm'
+        onClick={()=>openDM(name, side)}>
         <AccountCircleOutlinedIcon id='hash' fontSize='small'/>
         {name}
       </div>
@@ -260,6 +275,7 @@ function Home(props) {
     setAtDisplay('none');
     setSearchDisplay('none');
     setProfileDisplay('none');
+    setDMChosen('none');
     setChannelChosen('none');
     setDirectDisplay('none');
     setChannelDisplay('none');
@@ -281,6 +297,11 @@ function Home(props) {
       <div id='chosen-channel' style={{display: channelChosen}}>
         {generateHeader()}
         <Channel name={channelName}/>
+      </div>
+      <div id='chosen-channel' style={{display: dmChosen}}>
+        {generateHeader()}
+        <Dm workspace={workspace} name={dmName}
+          main={username} side={sideName}/>
       </div>
       <div style={{display: messageDisplay}}>
         {generateHeader()}
