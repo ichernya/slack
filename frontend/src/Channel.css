@@ -22,7 +22,7 @@
   z-index: 9;
 }
 
-#channel-main {
+#dm-main {
   position: absolute;
   margin-top: 40px;
   overflow-y: auto;
