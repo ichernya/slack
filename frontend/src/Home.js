@@ -27,12 +27,12 @@ function Home(props) {
   const [workspaces, setWorkspaces] = React.useState([]);
   const [workspace, setWorkspace] = React.useState('');
   const [workspaceDisplay, setWorkspaceDisplay] = React.useState('none');
-  const [channelDisplay, setChannelDisplay] = React.useState('none');
+  const [channelDisplay, setChannelDisplay] = React.useState('block');
   const [channelChosen, setChannelChosen] = React.useState('none');
   const [dmChosen, setDMChosen] = React.useState('none');
   const [channelName, setChannelName] = React.useState('');
   const [dmName, setDMName] = React.useState('');
-  const [directDisplay, setDirectDisplay] = React.useState('none');
+  const [directDisplay, setDirectDisplay] = React.useState('block');
   const [messageDisplay, setMessageDisplay] = React.useState('none');
   const [atDisplay, setAtDisplay] = React.useState('none');
   const [searchDisplay, setSearchDisplay] = React.useState('none');
@@ -148,7 +148,12 @@ function Home(props) {
   */
   function createWorkspaces(string) {
     return (
-      <div id='workspace' onClick={()=>setWorkspace(string)}>
+      <div id='workspace' onClick={()=>{
+        setWorkspaceDisplay('none');
+        setWorkspace(string);
+        setDirectDisplay('block');
+        setChannelDisplay('block');
+      }}>
         <ChevronRightIcon id='workspace-arrow' fontSize='medium'/>
         {string}
       </div>
@@ -277,8 +282,6 @@ function Home(props) {
     setProfileDisplay('none');
     setDMChosen('none');
     setChannelChosen('none');
-    setDirectDisplay('none');
-    setChannelDisplay('none');
     setAddDMBox('none');
     setAddChannelBox('none');
   }
@@ -377,11 +380,17 @@ function Home(props) {
           />
         </div>
         <button id='channel-button' style={{display: addChannelBox}}
-          onClick={()=>addChannel(addedChannel)}>
+          onClick={()=>{
+            addChannel(addedChannel);
+            setAddChannelBox('none');
+          }}>
           Add
         </button>
         <button id='dm-button' style={{display: addDMBox}}
-          onClick={()=>addDM(addedDM)}>
+          onClick={()=>{
+            addDM(addedDM);
+            setAddDMBox('none');
+          }}>
           Add
         </button>
       </div>

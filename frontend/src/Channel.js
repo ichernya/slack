@@ -38,15 +38,26 @@ function Channel(props) {
   */
   function createMessage(obj) {
     const displayName = obj.curuser;
+    const displayTime = obj.senttime;
     return (
       <div id='message'>
+        <div id = "pic">
         <AccountCircleIcon fontSize='inherit' id='profile-pic'/>
-        <div>
+        </div>
+        <div id ="container">
+        <div id ="name"class="child">
           {displayName}
         </div>
+        <div id ="time" class="child">
+          {displayTime}
+        </div>
+        </div>
+        <br>
+        </br>
+        <br>
+        </br>
         <div>
           {obj.messagebody}
-          Replies {obj.replies}
         </div>
       </div>
     );
