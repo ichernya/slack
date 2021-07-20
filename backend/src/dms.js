@@ -54,6 +54,7 @@ const postDm = async (userone, workspace, usertwo, message) => {
     }
     await pool.query(query);
 }
+
 exports.getAll = async (req, res) => {
     const names = await allNames(req.query.user, req.query.workspace);
     res.status(200).json(names);

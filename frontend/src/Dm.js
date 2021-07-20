@@ -57,7 +57,7 @@ function Dm(props) {
     setAddedDM('');
     const body = {
       userOne: props.main,
-      curWorkspace: props.workspace,
+      workspace: props.workspace,
       userTwo: props.side,
       sentMessages: {
         sent: props.main,
