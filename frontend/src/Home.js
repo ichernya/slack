@@ -16,15 +16,13 @@ import AccountCircleOutlinedIcon from
   '@material-ui/icons/AccountCircleOutlined';
 import './Home.css';
 
-const exampleWorkspaces = ['CSE183 Summer 2020', 'CSE183 Summer 2019',
-  'CSE183 Summer 2021'];
-
 /**
 * @param {Object} props - Props from parent
 * @return {JSX} - Home Page for Application
 */
 function Home(props) {
   const username = props.username;
+  const [workspaces, setWorkspaces] = React.useState([]);
   const [workspace, setWorkspace] = React.useState('');
   const [workspaceDisplay, setWorkspaceDisplay] = React.useState('none');
   const [channelDisplay, setChannelDisplay] = React.useState('none');
@@ -41,6 +39,24 @@ function Home(props) {
   const [currDMs, setCurrDMs] = React.useState([]);
   const [addChannelBox, setAddChannelBox] = React.useState('none');
   const [addDMBox, setAddDMBox] = React.useState('none');
+  useEffect(() => {
+    fetch('http://localhost:3010/v0/workspace')
+      .then(async (res) => {
+        const arrayWork = [];
+        if (res.status === 200) {
+          const foundWorkspaces = await res.json();
+          for (let i = 0; i < foundWorkspaces.length; i++) {
+            const workspacename = foundWorkspaces[i].workspacename;
+            if (workspacename !== workspace) {
+              arrayWork.push(createWorkspaces(workspacename));
+            }
+          }
+          setWorkspaces(arrayWork);
+        }
+      },
+      )
+      .catch((err) => err);
+  }, [workspace]);
   useEffect(() => {
     const first = 'http://localhost:3010/v0/';
     fetch(first + `channel?Workspace=${workspace}`)
@@ -118,18 +134,16 @@ function Home(props) {
       .catch((err) => err);
   }
   /**
-  * @return {Array} - Channels for Page
+  * @param {String} string - Name of workspace
+  * @return {JSX} - Workspace for Page
   */
-  function generateWorkspaces() {
-    const workspaces = [];
-    for (let i = 0; i < exampleWorkspaces.length; i++) {
-      workspaces[i] = <div id='workspace' onClick={
-        ()=>setWorkspace(exampleWorkspaces[i])}>
+  function createWorkspaces(string) {
+    return (
+      <div id='workspace' onClick={()=>setWorkspace(string)}>
         <ChevronRightIcon id='workspace-arrow' fontSize='medium'/>
-        {exampleWorkspaces[i]}
-      </div>;
-    }
-    return workspaces;
+        {string}
+      </div>
+    );
   }
   /**
   * @param {String} name - Name of Channel to Open
@@ -283,7 +297,7 @@ function Home(props) {
             setWorkspaceDisplay('none') : setWorkspaceDisplay('block')}/>
       </div>
       <div id='workspace-body' style={{display: workspaceDisplay}}>
-        {generateWorkspaces()}
+        {workspaces}
       </div>
       <div id='channel-body'>
         <div id='body-header'>
