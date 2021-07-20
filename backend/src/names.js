@@ -40,7 +40,6 @@ exports.updateUser = async (req, res) => {
     const user = await findName(req.body.user);
     if (user){
         user.workspace = works;
-        console.log(user)
         await updateName(req.body.user, user);
         res.status(200).send();
     }

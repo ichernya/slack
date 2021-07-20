@@ -25,7 +25,7 @@ const exampleWorkspaces = ['CSE183 Summer 2020', 'CSE183 Summer 2019',
 */
 function Home(props) {
   const username = props.username;
-  const [workspace, setWorkspace] = React.useState('CSE183 Summer 2021');
+  const [workspace, setWorkspace] = React.useState('');
   const [workspaceDisplay, setWorkspaceDisplay] = React.useState('none');
   const [channelDisplay, setChannelDisplay] = React.useState('none');
   const [channelChosen, setChannelChosen] = React.useState('none');
@@ -74,7 +74,9 @@ function Home(props) {
       .catch((err) => err);
   }, [workspace, username]);
   useEffect(() => {
-    console.log('hello');
+    if (workspace === '') {
+      return;
+    }
     fetch('http://localhost:3010/v0/name', {
       method: 'PUT',
       body: JSON.stringify({
@@ -88,7 +90,17 @@ function Home(props) {
     })
       .then((res) => res.json())
       .catch((err) => err);
-  }, [workspace, username]);
+  }, [workspace]);
+  useEffect(()=>{
+    const first = 'http://localhost:3010/v0/';
+    fetch(first + `name?user=${username}`)
+      .then(async (res) => {
+        const userData = await res.json();
+        setWorkspace(userData.workspace);
+      },
+      )
+      .catch((err) => err);
+  }, [username]);
   /**
   * @param {String} user - Username for user
   */
