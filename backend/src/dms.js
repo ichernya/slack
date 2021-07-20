@@ -47,8 +47,7 @@ const allMessages = async (user, workspace, userTwo) => {
 
 }
 
-const postDm = async (userone, workspace, usertwo) => {
-    const message = {};
+const postDm = async (userone, workspace, usertwo, message) => {
     const insert = 'INSERT INTO dms (userOne, curWorkspace, userTwo, sentMessages) VALUES ($1, $2, $3, $4)'
     const query = {
         text: insert,
@@ -63,20 +62,19 @@ exports.getAll = async (req, res) => {
 }
 
 exports.getMessages = async (req, res) => {
-    console.log(req.query.user);
-    console.log(req.query.workspace);
-    console.log(req.query.userSecond);
     const messages = await allMessages(req.query.user, req.query.workspace, req.query.userSecond)
     if (messages) {res.status(200).json(messages);}
     res.status(404).send();
 }
 
 exports.newMessage = async (req, res) => {
-    console.log(req.body);
+    await postDm(req.body.userOne, req.body.workspace, req.body.userTwo, req.body.sentMessages);
+    res.status(201).send();
 }
 
 exports.addDm = async (req, res) => {
     console.log(req.body);
-    await postDm(req.body.userone, req.body.workspace, req.body.usertwo);
+    const message = {};
+    await postDm(req.body.userone, req.body.workspace, req.body.usertwo, message);
     res.status(200).send();
 }

@@ -37,23 +37,6 @@ exports.getById = async (req, res) => {
     res.status(404);
 }
 
-//type: object
-// properties:
-// id:
-//   type: string
-// sentMessages:
-//   type: object
-//   properties:
-//     sent:
-//       type: string
-//     time:
-//       type: string
-//     message:
-//       type: string
-
-// https://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid
-
-
 exports.create = async (req, res) => {
    
     console.log(req.body.sentMessages);
