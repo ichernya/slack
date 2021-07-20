@@ -87,11 +87,30 @@ function Dm(props) {
   function createMessage(obj) {
     const message = (obj.sentMessages) ? obj.sentMessages : obj.sentmessages;
     const displayName = (message.sent === props.main) ? fullName : props.name;
+    const displayTime = (message.time);
     return (
       <div id='message'>
+      <div id='pic'>
         <AccountCircleIcon fontSize='inherit' id='profile-pic'/>
+<<<<<<< Updated upstream
         <div>
           {displayName}
+=======
+        </div>
+        <div id = 'container'>
+        <br>
+        </br>
+        <div id ='name' class='child'>
+        {displayName}
+>>>>>>> Stashed changes
+        </div>
+        <div id ='time' class='child'>
+          {displayTime}
+        </div>
+        <br>
+        </br>
+        <br>
+        </br>
         </div>
         <div>
           {message.message}

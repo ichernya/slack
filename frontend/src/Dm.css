@@ -10,6 +10,19 @@
   z-index: 9;
 }
 
+#name {
+  font-weight: 750;
+  font-size: 15;
+  float: left;
+}
+
+.child {
+  border: 5px;
+  padding: 5px;
+  float: left;
+}
+
+
 #dm-type {
   font-family: sans-serif;
   color: white;
@@ -33,19 +46,31 @@
   width: 100%;
   z-index: 9;
   font-size: 15pt;
-  /* overflow-wrap: normal; */
+  overflow-wrap: normal
+}
+
+#pic {
+  height: 30px;
+  width: 35px;
+  vertical-align: top;
 }
 
 #profile-pic {
   float: left;
-  font-size: 30pt;
-  margin-bottom: 10px;
+  vertical-align: top;
+  font-size:  35px;
 }
 
 #message {
+  padding-left: 5px;
+  padding-bottom: 5px;
   width: 100%;
-  background-color: red;
+  background-color: white;
+  float: left;
   border-bottom: solid white 4px;
+  border: solid;
+  border-color: rgb(161, 1, 161);
+  font-size: 13px;
 }
 
 #dm-adder {
