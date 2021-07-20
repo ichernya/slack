@@ -24,13 +24,42 @@
 
 #dm-main {
   position: absolute;
-  background-color: rgb(170, 169, 169);
+  background-color: white;
+  color: black;
   margin-top: 40px;
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
   width: 100%;
   z-index: 9;
-  font-size: 30pt;
+  font-size: 15pt;
   overflow-wrap: normal;
+}
+
+#dm-adder {
+  background-color: white;
+  position: fixed;
+  bottom: 0%;
+  height: 60px;
+  width: 100%;
+  left: 0%;
+  right: 0%;
+  z-index: 10;
+  margin-bottom: 36px;
+}
+
+#add-dm {
+  padding-left: 10px;
+  width: 82%;
+  margin-left: 1%;
+}
+
+#dm-button {
+  border-radius: 1px;
+  position: fixed;
+  bottom: 0%;
+  height: 36px;
+  right: 1%;
+  z-index: 10;
+  margin-bottom: 60px;
 }

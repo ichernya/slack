@@ -6,7 +6,14 @@ import './Dm.css';
 * @return {JSX} - Channel Page
 */
 function Dm(props) {
+  const [addedDM, setAddedDM] = React.useState('');
+  const [fullName, setFullName] = React.useState('');
   const [currMessages, setCurrMessages] = React.useState([]);
+  useEffect(async () => {
+    if (props.main) {
+      fetchFullName();
+    }
+  }, [props.main]);
   useEffect(() => {
     if (props.side) {
       const second = `&workspace=${props.workspace}&userSecond=${props.side}`;
@@ -16,8 +23,11 @@ function Dm(props) {
           if (res.status === 200) {
             const foundMessages = await res.json();
             for (let i = 0; i < foundMessages.length; i++) {
-              console.log(foundMessages[i]);
-              messageArray.push(createMessage(foundMessages[i]));
+              const message = foundMessages[i];
+              const sentMessages = message.sentMessages;
+              if (Object.keys(sentMessages).length !== 0) {
+                messageArray.push(createMessage(message));
+              }
             }
             setCurrMessages(messageArray);
           }
@@ -25,13 +35,55 @@ function Dm(props) {
         )
         .catch((err) => err);
     }
-  }, [props.workspace]);
+  }, [props.workspace, props.side]);
+  /**
+  * @param {String} user - Username for user
+  */
+  function fetchFullName(user) {
+    const first = 'http://localhost:3010/v0/';
+    fetch(first + `name?user=${props.main}`)
+      .then(async (res) => {
+        const userData = await res.json();
+        const fullNameTemp = userData.firstName + ' ' + userData.lastName;
+        setFullName(fullNameTemp);
+      },
+      )
+      .catch((err) => err);
+  }
+  /**
+  * @param {String} newMessage - Message to Add
+  */
+  function addDM(newMessage) {
+    const body = {
+      curWorkspace: props.workspace,
+      userOne: props.main,
+      userTwo: props.side,
+      sentMessages: {
+        sent: props.main,
+        received: props.side,
+        time: (new Date().toISOString().split('.')[0] +'Z'),
+        message: newMessage,
+      }};
+    fetch('http://localhost:3010/v0/dmMessages', {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .catch((err) => err);
+    const newDM = createMessage(body);
+    setCurrMessages((array) => [...array, newDM]);
+  }
   /**
   * @param {JSON} object - Message Object with Information
   * @return {JSX} - JSX for Message
   */
   function createMessage(object) {
-    const message = object.sentmessages.message;
+    const message = object.sentMessages.message;
+    console.log(fullName);
     return (
       <div id='message'>{message}</div>
     );
@@ -45,6 +97,19 @@ function Dm(props) {
       </div>
       <div id='dm-main'>
         {currMessages}
+        <div id='dm-adder'>
+          <input
+            id='add-dm'
+            type='text'
+            onInput={(event)=>setAddedDM(event.target.value)}
+            value={addedDM}
+            placeholder='Send Message'
+          />
+        </div>
+        <button id='dm-button'
+          onClick={()=>addDM(addedDM)}>
+          Send
+        </button>
       </div>
     </div>
   );
