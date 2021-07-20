@@ -58,64 +58,69 @@ function Home(props) {
       .catch((err) => err);
   }, [workspace]);
   useEffect(() => {
-    const first = 'http://localhost:3010/v0/';
-    fetch(first + `channel?Workspace=${workspace}`)
-      .then(async (res) => {
-        const array = [];
-        if (res.status === 200) {
-          const channels = await res.json();
-          for (let i = 0; i < channels.length; i++) {
-            const name = channels[i].channelname;
-            array.push(createChannel(name));
+    if (workspace) {
+      const first = 'http://localhost:3010/v0/';
+      fetch(first + `channel?Workspace=${workspace}`)
+        .then(async (res) => {
+          const array = [];
+          if (res.status === 200) {
+            const channels = await res.json();
+            for (let i = 0; i < channels.length; i++) {
+              const name = channels[i].channelname;
+              array.push(createChannel(name));
+            }
           }
-        }
-        setCurrChannels(array);
-      },
-      )
-      .catch((err) => err);
+          setCurrChannels(array);
+        },
+        )
+        .catch((err) => err);
+    }
   }, [workspace]);
   useEffect(() => {
-    setCurrDMs([]);
-    const first = 'http://localhost:3010/v0/';
-    fetch(first + `dms?user=${username}&workspace=${workspace}`)
-      .then(async (res) => {
-        if (res.status === 200) {
-          const users = await res.json();
-          for (let i = 0; i < users.length; i++) {
-            fetchFullName(users[i]);
+    if (username && workspace) {
+      setCurrDMs([]);
+      const first = 'http://localhost:3010/v0/';
+      fetch(first + `dms?user=${username}&workspace=${workspace}`)
+        .then(async (res) => {
+          if (res.status === 200) {
+            const users = await res.json();
+            for (let i = 0; i < users.length; i++) {
+              fetchFullName(users[i]);
+            }
           }
-        }
-      },
-      )
-      .catch((err) => err);
+        },
+        )
+        .catch((err) => err);
+    }
   }, [workspace, username]);
   useEffect(() => {
-    if (workspace === '') {
-      return;
+    if (workspace) {
+      fetch('http://localhost:3010/v0/name', {
+        method: 'PUT',
+        body: JSON.stringify({
+          user: username,
+          workspace: workspace,
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((res) => res.json())
+        .catch((err) => err);
     }
-    fetch('http://localhost:3010/v0/name', {
-      method: 'PUT',
-      body: JSON.stringify({
-        user: username,
-        workspace: workspace,
-      }),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .catch((err) => err);
   }, [workspace]);
   useEffect(()=>{
-    const first = 'http://localhost:3010/v0/';
-    fetch(first + `name?user=${username}`)
-      .then(async (res) => {
-        const userData = await res.json();
-        setWorkspace(userData.workspace);
-      },
-      )
-      .catch((err) => err);
+    if (username) {
+      const first = 'http://localhost:3010/v0/';
+      fetch(first + `name?user=${username}`)
+        .then(async (res) => {
+          const userData = await res.json();
+          setWorkspace(userData.workspace);
+        },
+        )
+        .catch((err) => err);
+    }
   }, [username]);
   /**
   * @param {String} user - Username for user
