@@ -40,7 +40,6 @@ const allMessages = async (user, workspace, userTwo) => {
     const ret = [];
     const {rows} = await pool.query(query);
     for (const row of rows) {
-        console.log(row);
         ret.push(row);
     }
     return ret;

@@ -9,7 +9,7 @@ function Dm(props) {
   const [addedDM, setAddedDM] = React.useState('');
   const [fullName, setFullName] = React.useState('');
   const [currMessages, setCurrMessages] = React.useState([]);
-  useEffect(async () => {
+  useEffect(() => {
     if (props.main) {
       fetchFullName();
     }
@@ -24,7 +24,7 @@ function Dm(props) {
             const foundMessages = await res.json();
             for (let i = 0; i < foundMessages.length; i++) {
               const message = foundMessages[i];
-              const sentMessages = message.sentMessages;
+              const sentMessages = message.sentmessages;
               if (Object.keys(sentMessages).length !== 0) {
                 messageArray.push(createMessage(message));
               }
@@ -54,9 +54,10 @@ function Dm(props) {
   * @param {String} newMessage - Message to Add
   */
   function addDM(newMessage) {
+    setAddedDM('');
     const body = {
-      curWorkspace: props.workspace,
       userOne: props.main,
+      curWorkspace: props.workspace,
       userTwo: props.side,
       sentMessages: {
         sent: props.main,
@@ -82,10 +83,14 @@ function Dm(props) {
   * @return {JSX} - JSX for Message
   */
   function createMessage(object) {
-    const message = object.sentMessages.message;
-    console.log(fullName);
+    let message;
+    if (object.sentMessages) {
+      message = object.sentMessages.message;
+    } else {
+      message = object.sentmessages.message;
+    }
     return (
-      <div id='message'>{message}</div>
+      <div id='message'>{fullName}{message}</div>
     );
   }
   return (
