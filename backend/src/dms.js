@@ -32,7 +32,7 @@ const allNames = async (user, workspace) => {
 }
 
 const allMessages = async (user, workspace, userTwo) => {
-    const select = 'SELECT * FROM dms WHERE ((userOne = $1) AND (userTwo = $3)) OR ((userOne = $3) AND (userTwo = $1)) AND (curWorkspace = $2)'
+    const select = 'SELECT * FROM dms WHERE (((userOne = $1) AND (userTwo = $3)) OR ((userOne = $3) AND (userTwo = $1))) AND (curWorkspace = $2)'
     const query = {
         text: select,
         values: [ user, workspace, userTwo ]
