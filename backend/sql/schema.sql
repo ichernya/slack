@@ -17,7 +17,7 @@ CREATE TABLE channel (curWorkspace VARCHAR(32), channelName VARCHAR(32));
 
 DROP TABLE IF EXISTS messages;
 
-CREATE TABLE messages (curChannel VARCHAR(32), curuser VARCHAR(32), sentTime VARCHAR(32), replies SMALLINT, messagebody TEXT, ID UUID UNIQUE PRIMARY KEY DEFAULT gen_random_uuid());
+CREATE TABLE messages ( curWorkspace VARCHAR(32), curChannel VARCHAR(32), curuser VARCHAR(32), sentTime VARCHAR(32), replies SMALLINT, messagebody TEXT, ID UUID UNIQUE PRIMARY KEY DEFAULT gen_random_uuid());
 
 DROP TABLE IF EXISTS dms;
 

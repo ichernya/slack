@@ -129,6 +129,12 @@ paths:
             type: string
           required: true
           description: messages to return, blank for all
+        - in: query
+          name: workspace
+          schema: 
+            type: string
+          required: true
+          description: workspace
       responses:
         200: 
           description: messages returned
@@ -441,6 +447,8 @@ components:
           type: string
         channel:
           type: string
+        workspace:
+          type: string
         replies:
           type: integer
 
@@ -480,6 +488,8 @@ components:
 
     Message:
       properties:
+        curWorkpace:
+          type: string
         curChannel:
           type: string
         curuser:
