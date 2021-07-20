@@ -24,7 +24,6 @@
 
 #channel-main {
   position: absolute;
-  background-color: rgb(170, 169, 169);
   margin-top: 40px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -32,4 +31,52 @@
   width: 100%;
   z-index: 9;
   font-size: 150pt;
+}
+
+#profile-pic {
+  float: left;
+  font-size: 30pt;
+  margin-bottom: 10px;
+}
+
+#profile-pic {
+  float: left;
+  font-size: 30pt;
+  margin-bottom: 10px;
+}
+
+#message {
+  width: 100%;
+  background-color: red;
+  border-bottom: solid white 4px;
+  font-size: 15pt;
+}
+
+#dm-adder {
+  background-color: white;
+  position: fixed;
+  bottom: 0%;
+  height: 60px;
+  width: 100%;
+  left: 0%;
+  right: 0%;
+  z-index: 10;
+  margin-bottom: 36px;
+}
+
+#add-dm {
+  height: 50%;
+  padding-left: 10px;
+  width: 80%;
+  margin-left: 1%;
+}
+
+#dm-button {
+  border-radius: 1px;
+  position: fixed;
+  bottom: 0%;
+  height: 36px;
+  right: 1%;
+  z-index: 10;
+  margin-bottom: 60px;
 }

@@ -296,7 +296,8 @@ function Home(props) {
     <div>
       <div id='chosen-channel' style={{display: channelChosen}}>
         {generateHeader()}
-        <Channel name={channelName}/>
+        <Channel workspace={workspace} name={channelName}
+          main={username}/>
       </div>
       <div id='chosen-channel' style={{display: dmChosen}}>
         {generateHeader()}

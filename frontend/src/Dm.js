@@ -91,7 +91,7 @@ function Dm(props) {
       <div id='message'>
         <AccountCircleIcon fontSize='inherit' id='profile-pic'/>
         <div>
-        {displayName}
+          {displayName}
         </div>
         <div>
           {message.message}
