@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './Dm.css';
 
 /**
@@ -54,6 +55,7 @@ function Dm(props) {
   * @param {String} newMessage - Message to Add
   */
   function addDM(newMessage) {
+    console.log((new Date().toISOString().split('.')[0] +'Z'));
     setAddedDM('');
     const body = {
       userOne: props.main,
@@ -82,15 +84,19 @@ function Dm(props) {
   * @param {JSON} object - Message Object with Information
   * @return {JSX} - JSX for Message
   */
-  function createMessage(object) {
-    let message;
-    if (object.sentMessages) {
-      message = object.sentMessages.message;
-    } else {
-      message = object.sentmessages.message;
-    }
+  function createMessage(obj) {
+    const message = (obj.sentMessages) ? obj.sentMessages : obj.sentmessages;
+    const displayName = (message.sent === props.main) ? fullName : props.name;
     return (
-      <div id='message'>{fullName}{message}</div>
+      <div id='message'>
+        <AccountCircleIcon fontSize='inherit' id='profile-pic'/>
+        <div>
+        {displayName}
+        </div>
+        <div>
+          {message.message}
+        </div>
+      </div>
     );
   }
   return (
