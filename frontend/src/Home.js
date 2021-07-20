@@ -293,8 +293,11 @@ function Home(props) {
       <div id='header'>
         {workspace}
         <ArrowDropDownCircleIcon id='header-arrow'
-          onClick={()=> workspaceDisplay === 'block' ?
-            setWorkspaceDisplay('none') : setWorkspaceDisplay('block')}/>
+          onClick={()=> {
+            closeAll();
+            workspaceDisplay === 'block' ?
+              setWorkspaceDisplay('none') : setWorkspaceDisplay('block');
+          }}/>
       </div>
       <div id='workspace-body' style={{display: workspaceDisplay}}>
         {workspaces}
