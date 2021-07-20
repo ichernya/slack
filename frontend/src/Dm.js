@@ -81,7 +81,7 @@ function Dm(props) {
     setCurrMessages((array) => [...array, newDM]);
   }
   /**
-  * @param {JSON} object - Message Object with Information
+  * @param {JSON} obj - Message Object with Information
   * @return {JSX} - JSX for Message
   */
   function createMessage(obj) {
