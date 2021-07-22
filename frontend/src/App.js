@@ -2,28 +2,12 @@ import React from 'react';
 import Home from './Home';
 import Checkbox from '@material-ui/core/Checkbox';
 import './App.css';
-// import Emoji from './Emoji';
 
-/**
- * Simple component with no state.
- *
- * @param {function} setDummy set the dummy state
- */
-// function getDummy(setDummy) {
-//   fetch('http://localhost:3010/v0/dummy')
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw response;
-//       }
-//       return response.json();
-//     })
-//     .then((json) => {
-//       setDummy(json.message);
-//     })
-//     .catch((error) => {
-//       setDummy(error.toString());
-//     });
-// }
+/*
+~ SOURCES ~
+fetch() - From Authenticated Books Example
+Checkbox - https://material-ui.com/components/material-icons/
+*/
 
 /**
 * Simple component with no state.

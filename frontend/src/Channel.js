@@ -2,6 +2,13 @@ import React, {useEffect} from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './Channel.css';
 
+/*
+~ SOURCES ~
+fetch() - From Authenticated Books Example
+useEffect() - https://reactjs.org/docs/hooks-effect.html
+AccountCircleIcon - https://material-ui.com/components/material-icons/
+*/
+
 /**
 * @param {Object} props - Channel Name
 * @return {JSX} - Channel Page
@@ -17,8 +24,6 @@ function Channel(props) {
           const messageArray = [];
           if (res.status === 200) {
             const foundMessages = await res.json();
-            console.log(foundMessages);
-            console.log('JUICY');
             for (let i = 0; i < foundMessages.length; i++) {
               const message = foundMessages[i];
               if (Object.keys(message.messagebody).length !== 0) {

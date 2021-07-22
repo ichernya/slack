@@ -17,6 +17,24 @@ import AccountCircleOutlinedIcon from
   '@material-ui/icons/AccountCircleOutlined';
 import './Home.css';
 
+/*
+~ SOURCES ~
+fetch() - From Authenticated Books Example
+useEffect() - https://reactjs.org/docs/hooks-effect.html
+BottomNavigation - https://material-ui.com/components/material-icons/
+BottomNavigationAction - https://material-ui.com/components/material-icons/
+HomeOutlinedIcon - https://material-ui.com/components/material-icons/
+ForumOutlinedIcon - https://material-ui.com/components/material-icons/
+AlternateEmailIcon - https://material-ui.com/components/material-icons/
+SearchIcon - https://material-ui.com/components/material-icons/
+PermIdentityIcon - https://material-ui.com/components/material-icons/
+ArrowDropDownCircleIcon - https://material-ui.com/components/material-icons/
+ChevronRightIcon - https://material-ui.com/components/material-icons/
+AddBoxOutlinedIcon - https://material-ui.com/components/material-icons/
+ArrowBackOutlinedIcon - https://material-ui.com/components/material-icons/
+AccountCircleOutlinedIcon - https://material-ui.com/components/material-icons/
+*/
+
 /**
 * @param {Object} props - Props from parent
 * @return {JSX} - Home Page for Application

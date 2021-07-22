@@ -2,6 +2,13 @@ import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './Profile.css';
 
+/*
+~ SOURCES ~
+fetch() - From Authenticated Books Example
+useEffect() - https://reactjs.org/docs/hooks-effect.html
+AccountCircleIcon - https://material-ui.com/components/material-icons/
+*/
+
 /**
 * @param {Object} props - Props from Parent
 * @return {JSX} - Profile Page for Application
