@@ -54,9 +54,9 @@ function App() {
         <div id='password-container'>
           <input
             id = 'password-input'
-            type='text'
+            type='password'
             onInput={(event)=>setPassword(event.target.value)}
-            value={password}
+            value={(password)}
             placeholder='Password'
           />
         </div>
