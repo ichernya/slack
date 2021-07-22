@@ -6,6 +6,7 @@ import './Dm.css';
 ~ SOURCES ~
 fetch() - From Authenticated Books Example
 useEffect() - https://reactjs.org/docs/hooks-effect.html
+handleDate() - From Keaton's Assignment 5
 AccountCircleIcon - https://material-ui.com/components/material-icons/
 */
 
@@ -97,28 +98,54 @@ function Dm(props) {
     const displayTime = (message.time);
     return (
       <div id='message'>
-      <div id='pic'>
-        <AccountCircleIcon fontSize='inherit' id='profile-pic'/>
+        <div id='pic'>
+          <AccountCircleIcon fontSize='inherit' id='profile-pic'/>
         </div>
         <div id = 'container'>
-        <br>
-        </br>
-        <div id ='name' class='child'>
-        {displayName}
-        </div>
-        <div id ='time' class='child'>
-          {displayTime}
-        </div>
-        <br>
-        </br>
-        <br>
-        </br>
+          <br>
+          </br>
+          <div id ='name' class='child'>
+            {displayName}
+          </div>
+          <div id ='time' class='child'>
+            {handleDate(displayTime)}
+          </div>
+          <br>
+          </br>
+          <br>
+          </br>
         </div>
         <div>
           {message.message}
         </div>
       </div>
     );
+  }
+  /**
+  * @param {String} date - Email's date
+  * @return {String} - Date formatted
+  */
+  function handleDate(date) {
+    const monthsAbrev = ['PlaceHolder', 'Jan', 'Feb', 'Mar', 'Apr',
+      'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentDay = currentDate.getDate();
+    const firstHalf = '([0-9]+)-([0-9]+)-([0-9]+)';
+    const secondHalf = 'T([0-9]+):([0-9]+):([0-9]+)Z';
+    const dateRegex = new RegExp(firstHalf + secondHalf);
+    const matches = date.match(dateRegex);
+    if (currentYear !== Number(matches[1])) {
+      return Number(matches[1]);
+    } else if (currentMonth === Number(matches[2]) &&
+      currentDay === Number(matches[3])) {
+      const militaryHour = Number(matches[4]);
+      const normalHour = militaryHour > 12 ? militaryHour % 12 : militaryHour;
+      return `${normalHour}:${matches[5]}`;
+    } else {
+      return `${monthsAbrev[Number(matches[2])]} ${Number(matches[3])}`;
+    }
   }
   return (
     <div>
