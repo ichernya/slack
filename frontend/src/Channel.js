@@ -75,7 +75,7 @@ function Channel(props) {
     const curTime = (new Date().toISOString().split('.')[0] +'Z');
     setAddedMessage('');
     const body = {
-      username: 'user1',
+      username: props.main,
       message: newMessage,
       time: curTime,
       channel: props.name,
@@ -95,7 +95,7 @@ function Channel(props) {
     const newMSG = createMessage({
       curworkspace: props.workspace,
       curchannel: props.name,
-      curuser: 'user1',
+      curuser: props.main,
       senttime: curTime,
       replies: 0,
       messagebody: newMessage,
